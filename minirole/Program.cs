@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace minirole
+namespace Peace_Mill
 {
     /// <summary>
     /// The main class.

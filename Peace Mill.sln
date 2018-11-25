@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minirole", "minirole\minirole.csproj", "{EB6F2D67-ED48-4426-9BC5-D85AF454D0F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peace Mill", "minirole\Peace Mill.csproj", "{EB6F2D67-ED48-4426-9BC5-D85AF454D0F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

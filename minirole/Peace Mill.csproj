@@ -9,8 +9,8 @@
     <ProjectGuid>{EB6F2D67-ED48-4426-9BC5-D85AF454D0F4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>minirole</RootNamespace>
-    <AssemblyName>minirole</AssemblyName>
+    <RootNamespace>Peace_Mill</RootNamespace>
+    <AssemblyName>Peace Mill</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
