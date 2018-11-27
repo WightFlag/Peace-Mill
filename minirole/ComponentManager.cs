@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
@@ -15,7 +12,7 @@ namespace Peace_Mill
     {
         public GraphicsDevice graphicsDevice;
         public ContentManager Content;
-        public List<Component> Components { get; private set; }
+        public List<Component> AvailableComponents { get; private set; } // available component types
         public Dictionary<int, Component> GameComoponents;
 
         private static ComponentManager _instance;
@@ -27,10 +24,9 @@ namespace Peace_Mill
                 if(_instance == null)
                 {
                     _instance = new ComponentManager();
-                    _instance.Components = new List<Component>();
+                    _instance.AvailableComponents = new List<Component>();
                     _instance.GameComoponents = new Dictionary<int, Component>();
                 }
-
                 return _instance;
             }
         }
@@ -40,15 +36,7 @@ namespace Peace_Mill
             int id = this.GameComoponents.Count;
             this.GameComoponents.Add(id, component);
             return id;
-        }
-
-        //public Type GetComponentType (Component component)
-        //{
-        //    var assembly = Assembly.GetExecutingAssembly();
-        //    var type = assembly.GetTypes().First(t => t.Name == component.Name);
-
-        //    return type;
-        //}
+        }        
 
         public Type GetComponentType(string component)
         {
@@ -62,6 +50,7 @@ namespace Peace_Mill
         {
             return Activator.CreateInstance(type);  
         }
+
 
     }
 }

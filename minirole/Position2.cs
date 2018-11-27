@@ -12,27 +12,29 @@ namespace Peace_Mill
 {
     class Position2 : Component, IPosition<Vector2,Vector2>
     {
-        private Vector2 _value;
+        private Vector2 _position;
         
-        public Vector2 Position { get => _value; set => _value = value; }
+        public Vector2 Position { get => _position; private set => _position = value; }
+
+        public float X { get => _position.X; set => _position.X = value; }
+        public float Y { get => _position.Y; set => _position.Y = value; }
 
         public Position2(GameObject gameObject)
         {
+            this.Name = "Position";
             this.gameObject = gameObject;
-            _value = Vector2.Zero;
+            _position = Vector2.Zero;
         }
 
-        public float X { get => _value.X; set => _value.X = value; }
-        public float Y { get => _value.Y; set => _value.Y = value; }
 
         public Vector2 Get()
         {
-            return _value;
+            return _position;
         }
 
-        public void Set(Vector2 value)
+        public void Set(Vector2 positionIn)
         {
-            _value = value;
+            _position = positionIn;
         }
     }
 }

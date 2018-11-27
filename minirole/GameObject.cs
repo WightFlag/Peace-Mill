@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 
 namespace Peace_Mill
 {
@@ -17,7 +12,9 @@ namespace Peace_Mill
         public Dictionary<string, Component> Components;
         public List<Component> Renderables;
         public Transform Transform;
+        public Properties Properties;
         public IPosition<Vector2,Vector2> Position;
+        public IVelocity<Vector2, Vector2> Velocity;
 
 
         #region Constructors
@@ -51,10 +48,12 @@ namespace Peace_Mill
         {
             Components = new Dictionary<string, Component>();
             Renderables = new List<Component>();
-
-            Transform = new Transform(this);
+            
             Position = new Position2(this);
+            Velocity = new Velocity2(this);
+            Transform = new Transform(this);
             GameObjectManager.Instance.AddComponent(this, (Component)Position);
+            GameObjectManager.Instance.AddComponent(this, (Component)Velocity);
             GameObjectManager.Instance.AddComponent(this, Transform);
         }
 

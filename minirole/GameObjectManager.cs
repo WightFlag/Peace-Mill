@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections.Generic;
 
 namespace Peace_Mill
 {
@@ -34,8 +25,6 @@ namespace Peace_Mill
         {
             component.gameObject = gameObject;
             gameObject.Components.Add(component.Name,component);
-            //var T = ComponentManager.Instance.GetComponentType(component);
-            //gameObject.Components[component.Name] = (Component)ComponentManager.Instance.Instantiate(T);
         }
 
         public void AddComponent(GameObject gameObject, string componentName)
@@ -44,8 +33,6 @@ namespace Peace_Mill
             Component component = (Component)ComponentManager.Instance.Instantiate(T);
             component.gameObject = gameObject;
             gameObject.Components.Add(component.Name, component);
-
-            //gameObject.Components[component.Name] = (Component)ComponentManager.Instance.Instantiate(T);
         }
 
         public void RemoveComponent(GameObject gameObject, Component component)

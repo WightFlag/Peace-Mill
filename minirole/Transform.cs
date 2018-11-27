@@ -8,12 +8,10 @@ namespace Peace_Mill
 {
     public class Transform : Component
     {
-        //private Vector2 _position;
         private float _rotation;
         private float _scale;
         private Vector2 _velocity;
 
-        //public Vector2 GetPosition { get { return _position; } private set { _position = value; } }
         public float GetRotation { get { return _rotation; } private set { _rotation = value; } }
         public float GetScale {  get { return _scale; } private set { _scale = value; } }
         public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
@@ -21,7 +19,6 @@ namespace Peace_Mill
         public Transform()
         {
             this.Name = "Transform";
-            //this._position = Vector2.Zero;
             this._rotation = 0.0f;
             this._scale = 1f;
             this._velocity = Vector2.Zero;            
@@ -49,7 +46,6 @@ namespace Peace_Mill
         public void Translate(Vector2 distance)
         {
             this.gameObject.Position.Set(this.gameObject.Position.Get() + distance);
-            //_position += distance;
         }
     }
 }
