@@ -16,7 +16,7 @@ namespace Peace_Mill
         public float GetScale {  get { return _scale; } private set { _scale = value; } }
         public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
 
-        public Transform()
+        public Transform() : base()
         {
             this.Name = "Transform";
             this._rotation = 0.0f;
@@ -24,7 +24,7 @@ namespace Peace_Mill
             this._velocity = Vector2.Zero;            
         }
 
-        public Transform(GameObject gameObject)
+        public Transform(GameObject gameObject): base()
         {
             this.Name = "Transform";
             this.gameObject = gameObject;

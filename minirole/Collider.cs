@@ -19,8 +19,9 @@ namespace Peace_Mill
         //    _collisionBox = new Rectangle(0, 0, 0, 0);
         //}
 
-        public Collider (GameObject gameObject)
+        public Collider (GameObject gameObject):base()
         {
+            this.Name = "Collider";
             this.gameObject = gameObject;
             _collisionBox = new Rectangle(0, 0, 0, 0);
         }        

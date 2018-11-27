@@ -16,7 +16,7 @@ namespace Peace_Mill
         public float X { get => _velocity.X; set => _velocity.X = value; }
         public float Y { get => _velocity.Y; set => _velocity.Y = value; }
         
-        public Velocity2(GameObject gameObject)
+        public Velocity2(GameObject gameObject):base()
         {
             this.Name = "Velocity";
             this.gameObject = gameObject;

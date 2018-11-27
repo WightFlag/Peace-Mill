@@ -13,5 +13,6 @@ namespace Peace_Mill
     interface IRenderable
     {
         void Draw(SpriteBatch spriteBatch);
+        bool HasAnimator { get; }
     }
 }

@@ -77,6 +77,7 @@ namespace Peace_Mill
         {
         }
 
+        //consider revising/modifying this to exclude images assocaited with animators
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach(IRenderable ir in Renderables)

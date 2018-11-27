@@ -19,7 +19,7 @@ namespace Peace_Mill
         public float X { get => _position.X; set => _position.X = value; }
         public float Y { get => _position.Y; set => _position.Y = value; }
 
-        public Position2(GameObject gameObject)
+        public Position2(GameObject gameObject):base()
         {
             this.Name = "Position";
             this.gameObject = gameObject;
