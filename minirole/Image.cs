@@ -23,12 +23,10 @@ namespace Peace_Mill
         public Rectangle sourceRect;
         public Color Tint;
         public float Alpha;
-        private bool _hasAnimator;
         private Animator _animator;
 
         private Vector2 _origin;
 
-        public bool HasAnimator { get => _hasAnimator; }
         public Animator Animator { get => _animator; }
 
         public Image() :base()
@@ -38,21 +36,7 @@ namespace Peace_Mill
             Path = String.Empty;
             Tint = Color.White;
             Alpha = 1.0f;
-            //_hasAnimator = false;
         }
-
-        //public void ToggleAnimator(Animator animator)
-        //{
-        //    _animator = animator;
-        //    _hasAnimator = true;
-        //    this.gameObject.Renderables.Remove(this);
-        //}
-
-        //public void ToggleAnimator()
-        //{
-        //    _animator = null;
-        //    _hasAnimator = false;
-        //}
 
         public override void LoadContent()
         {
@@ -77,9 +61,9 @@ namespace Peace_Mill
                 gameObject.Position, 
                 sourceRect, 
                 Tint*Alpha, 
-                gameObject.Transform.GetRotation, 
+                gameObject.Rotation, 
                 _origin, 
-                gameObject.Transform.GetScale, 
+                gameObject.Scale, 
                 SpriteEffects.None, 
                 0.0f);
         }

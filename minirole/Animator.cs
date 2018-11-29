@@ -23,7 +23,6 @@ namespace Peace_Mill
         public Vector2 FrameSize { get => _frameSize; }
         public Vector2 FrameSet { get => _frameSet; }
         public Vector2 CurrentFrameIndex { get => _currentFrameIndex; }
-        //public bool HasAnimator { get; } = false;
 
         public Animator(GameObject gameObject, int tileWidth, int tileHeight):base()
         {

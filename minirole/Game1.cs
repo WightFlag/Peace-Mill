@@ -59,7 +59,7 @@ namespace Peace_Mill
             //Screen = new GameObject("Image");
             Screen = new GameObject(screenImage);
                        
-            Screen.Transform.Scale(.22f);
+            Screen.Scale = .11f;
             Screen.Transform.Rotate(180f);
             Screen.Transform.Translate(new Vector2(400, 240));
 
@@ -91,6 +91,16 @@ namespace Peace_Mill
                 Exit();
 
             // TODO: Add your update logic here
+
+            //**************************************************************************************************************************************************************************
+
+            if (Screen.Position.X > 800 && Screen.Position.Y > 480)
+                Screen.Position = Vector2.Zero;
+            Screen.Transform.Translate(new Vector2(1, 1));
+            Screen.Transform.Rotate(1.0f);
+            Screen.Transform.Scale(0.001f);
+
+            //**************************************************************************************************************************************************************************
 
             base.Update(gameTime);
         }

@@ -45,9 +45,11 @@
     <Compile Include="Animator.cs" />
     <Compile Include="CollisionManager.cs" />
     <Compile Include="ICommand.cs" />
-    <Compile Include="ISize.cs" />
+    <Compile Include="Discarded\ISize.cs" />
+    <Compile Include="RotateCommand.cs" />
+    <Compile Include="ScaleCommand.cs" />
     <Compile Include="TranslateCommand.cs" />
-    <Compile Include="Velocity2.cs" />
+    <Compile Include="Discarded\Velocity2.cs" />
     <Compile Include="Collider.cs" />
     <Compile Include="GameObjectManager.cs" />
     <Compile Include="Component.cs" />
@@ -56,12 +58,12 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Image.cs" />
-    <Compile Include="IPosition.cs" />
-    <Compile Include="IVelocity.cs" />
-    <Compile Include="Position2.cs" />
+    <Compile Include="Discarded\IPosition.cs" />
+    <Compile Include="Discarded\IVelocity.cs" />
+    <Compile Include="Discarded\Position2.cs" />
     <Compile Include="IRenderable.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Properties.cs" />
+    <Compile Include="Discarded\Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transform.cs" />
   </ItemGroup>
