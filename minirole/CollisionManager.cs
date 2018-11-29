@@ -52,33 +52,33 @@ namespace Peace_Mill
             {
                 //this code is duplicate of single moving object solution. evaluate behavior at runtime and modify as necessary, or reduce method to single solution (remove bool
                 //as well as else clause in update method above.
-                var collider1pos = collider1.gameObject.Position.Get();
-                var collider2pos = collider2.gameObject.Position.Get();
+                var collider1pos = collider1.gameObject.Position;
+                var collider2pos = collider2.gameObject.Position;
                 var offset = new Vector2((collider1.CollisionBox.Width + collider2.CollisionBox.Width) / 2, (collider1.CollisionBox.Height + collider2.CollisionBox.Height) / 2);
 
                 if (collider1pos.X > 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider2pos.X + offset.X, collider1pos.Y));
+                    collider1.gameObject.Position = (new Vector2(collider2pos.X + offset.X, collider1pos.Y));
                 if (collider1pos.X < 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider2pos.X - offset.X, collider1pos.Y));
+                    collider1.gameObject.Position = (new Vector2(collider2pos.X - offset.X, collider1pos.Y));
                 if (collider1pos.Y > 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider1pos.X, collider2pos.Y + offset.Y));
+                    collider1.gameObject.Position = (new Vector2(collider1pos.X, collider2pos.Y + offset.Y));
                 if (collider1pos.Y < 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider1pos.X, collider2pos.Y - offset.Y));
+                    collider1.gameObject.Position = (new Vector2(collider1pos.X, collider2pos.Y - offset.Y));
             }
             else
             {
-                var collider1pos = collider1.gameObject.Position.Get();
-                var collider2pos = collider2.gameObject.Position.Get();
+                var collider1pos = collider1.gameObject.Position;
+                var collider2pos = collider2.gameObject.Position;
                 var offset = new Vector2((collider1.CollisionBox.Width + collider2.CollisionBox.Width)/2, (collider1.CollisionBox.Height + collider2.CollisionBox.Height)/2);
 
                 if (collider1pos.X > 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider2pos.X + offset.X, collider1pos.Y));
+                    collider1.gameObject.Position = (new Vector2(collider2pos.X + offset.X, collider1pos.Y));
                 if (collider1pos.X < 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider2pos.X - offset.X, collider1pos.Y));
+                    collider1.gameObject.Position = (new Vector2(collider2pos.X - offset.X, collider1pos.Y));
                 if (collider1pos.Y > 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider1pos.X, collider2pos.Y + offset.Y));
+                    collider1.gameObject.Position = (new Vector2(collider1pos.X, collider2pos.Y + offset.Y));
                 if (collider1pos.Y < 0)
-                    collider1.gameObject.Position.Set(new Vector2(collider1pos.X, collider2pos.Y - offset.Y));
+                    collider1.gameObject.Position = (new Vector2(collider1pos.X, collider2pos.Y - offset.Y));
             }
         }
     }

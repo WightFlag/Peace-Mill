@@ -12,11 +12,19 @@ namespace Peace_Mill
         public Dictionary<string, Component> Components;
         public List<Component> Renderables;
         public Transform Transform;
-        public Properties Properties;
-        public IPosition<Vector2,Vector2> Position;
-        public IVelocity<Vector2, Vector2> Velocity;
+        //public Properties Properties;
+        //public IPosition<Vector2,Vector2> Position;
+        //public IVelocity<Vector2, Vector2> Velocity;
+        //public ISize<Rectangle, Rectangle> Size;
+        private Vector2 _position;
+        private Vector2 _velocity;
+        private Rectangle _size;
 
+        public Vector2 Position { get => _position; set => _position = value; }
+        public Vector2 Velocity { get => _velocity; set => _velocity = value; }
+        public Rectangle Size { get => _size; set => _size = value; }
 
+        
         #region Constructors
 
         public GameObject()
@@ -48,16 +56,24 @@ namespace Peace_Mill
         {
             Components = new Dictionary<string, Component>();
             Renderables = new List<Component>();
-            
-            Position = new Position2(this);
-            Velocity = new Velocity2(this);
+
+            Position = Vector2.Zero;
+            Velocity = Vector2.Zero;
+            Size = Rectangle.Empty;
+            //Position = new Position2(this);
+            //Velocity = new Velocity2(this);
             Transform = new Transform(this);
-            GameObjectManager.Instance.AddComponent(this, (Component)Position);
-            GameObjectManager.Instance.AddComponent(this, (Component)Velocity);
+            //GameObjectManager.Instance.AddComponent(this, (Component)Position);
+            //GameObjectManager.Instance.AddComponent(this, (Component)Velocity);
             GameObjectManager.Instance.AddComponent(this, Transform);
         }
 
         #endregion Constructors
+
+        public void Execute(ICommand command)
+        {
+            command.Execute(this);
+        }
 
         public void LoadContent()
         {

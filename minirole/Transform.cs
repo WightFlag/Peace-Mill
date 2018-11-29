@@ -45,7 +45,8 @@ namespace Peace_Mill
 
         public void Translate(Vector2 distance)
         {
-            this.gameObject.Position.Set(this.gameObject.Position.Get() + distance);
+            gameObject.Execute(new TranslateCommand(distance));            
+            //this.gameObject.Position += distance);
         }
     }
 }

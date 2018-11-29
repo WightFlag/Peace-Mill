@@ -38,21 +38,21 @@ namespace Peace_Mill
             Path = String.Empty;
             Tint = Color.White;
             Alpha = 1.0f;
-            _hasAnimator = false;
+            //_hasAnimator = false;
         }
 
-        public void ToggleAnimator(Animator animator)
-        {
-            _animator = animator;
-            _hasAnimator = true;
-            this.gameObject.Renderables.Remove(this);
-        }
+        //public void ToggleAnimator(Animator animator)
+        //{
+        //    _animator = animator;
+        //    _hasAnimator = true;
+        //    this.gameObject.Renderables.Remove(this);
+        //}
 
-        public void ToggleAnimator()
-        {
-            _animator = null;
-            _hasAnimator = false;
-        }
+        //public void ToggleAnimator()
+        //{
+        //    _animator = null;
+        //    _hasAnimator = false;
+        //}
 
         public override void LoadContent()
         {
@@ -74,7 +74,7 @@ namespace Peace_Mill
         {
             spriteBatch.Draw(
                 Texture, 
-                gameObject.Position.Get(), 
+                gameObject.Position, 
                 sourceRect, 
                 Tint*Alpha, 
                 gameObject.Transform.GetRotation, 

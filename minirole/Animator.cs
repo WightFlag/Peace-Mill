@@ -10,20 +10,20 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class Animator :Component, IRenderable
+    public class Animator :Component
     {
-        private List<Texture2D> _frames;
+        //private List<Texture2D> _frames;
         private Image _spriteSheet;
         private Vector2 _frameSize;
         private Vector2 _frameSet;
         private Vector2 _currentFrameIndex;
 
-        public List<Texture2D> Frames { get => _frames; private set => _frames = value; }
+        //public List<Texture2D> Frames { get => _frames; private set => _frames = value; }
         public Image Spritesheet { get => _spriteSheet; }
         public Vector2 FrameSize { get => _frameSize; }
         public Vector2 FrameSet { get => _frameSet; }
         public Vector2 CurrentFrameIndex { get => _currentFrameIndex; }
-        public bool HasAnimator { get; } = false;
+        //public bool HasAnimator { get; } = false;
 
         public Animator(GameObject gameObject, int tileWidth, int tileHeight):base()
         {
@@ -36,14 +36,11 @@ namespace Peace_Mill
                 this._spriteSheet = image; // consider how to point to a GameObject's image when it may or may not have been set yet
                                            //also, items below in this constructor may need to move to LoadContent and same should be considered for other classes/constructors
                                            //also, implement a mechanism for preventing GameObjectManager from calling draw on images associated with Animators.
-                this._spriteSheet.ToggleAnimator(this);
+                //this._spriteSheet.ToggleAnimator(this);
 
                 this._frameSize = new Vector2(tileWidth, tileHeight);
                 this._frameSet = new Vector2(image.sourceRect.Width / tileWidth, image.sourceRect.Height / tileHeight);
             }
-
-
-
         }
 
         public void AdvanceFrame()
@@ -56,17 +53,12 @@ namespace Peace_Mill
             _currentFrameIndex.Y = row;
         }
 
-        public void LoadContent()
+        public override void LoadContent()
         {
 
         }
 
-        public void Update(GameTime gameTime)
-        {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Update(GameTime gameTime)
         {
 
         }

@@ -10,9 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    interface IRenderable
+    public interface IRenderable
     {
         void Draw(SpriteBatch spriteBatch);
-        bool HasAnimator { get; }
+        //bool HasAnimator { get; }
     }
 }

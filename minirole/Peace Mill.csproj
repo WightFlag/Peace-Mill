@@ -44,6 +44,9 @@
   <ItemGroup>
     <Compile Include="Animator.cs" />
     <Compile Include="CollisionManager.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="ISize.cs" />
+    <Compile Include="TranslateCommand.cs" />
     <Compile Include="Velocity2.cs" />
     <Compile Include="Collider.cs" />
     <Compile Include="GameObjectManager.cs" />
