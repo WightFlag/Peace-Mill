@@ -13,18 +13,20 @@ namespace Peace_Mill
 {
     public class Image : Component, IRenderable
     {
-        public string Path;
-        [XmlIgnore]
-        public Texture2D Texture;
         [XmlIgnore]
         public ContentManager Content;
         [XmlIgnore]
         public GraphicsDevice graphicsDevice;
-        public Rectangle sourceRect;
+        public string Path;
+        [XmlIgnore]
+        public Texture2D Texture;
+        [XmlIgnore]
+        public Texture2D RenderTarget;
+
         public Color Tint;
         public float Alpha;
-        private Animator _animator;
 
+        private Animator _animator;
         private Vector2 _origin;
 
         public Animator Animator { get => _animator; }
@@ -36,14 +38,34 @@ namespace Peace_Mill
             Path = String.Empty;
             Tint = Color.White;
             Alpha = 1.0f;
+            gameObject = new GameObject(this)
+            {
+                Image = this
+            };
+        }
+
+        public Image(GameObject gameObject) : base()
+        {
+            Name = "Image";
+            graphicsDevice = ComponentManager.Instance.graphicsDevice;
+            Path = String.Empty;
+            Tint = Color.White;
+            Alpha = 1.0f;
+            this.gameObject = gameObject;
+            gameObject.Image = this;
+            GameObjectManager.Instance.AddComponent(gameObject, this);
         }
 
         public override void LoadContent()
         {
             Content = new ContentManager(ComponentManager.Instance.Content.ServiceProvider, "Content");
             Texture = Content.Load<Texture2D>(Path);
-            sourceRect = new Rectangle(0, 0, Texture.Width, Texture.Height);
+            gameObject.SourceRect = new Rectangle(0, 0, Texture.Width, Texture.Height);
             _origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
+            RenderTarget = new Texture2D(graphicsDevice, gameObject.SourceRect.Width, gameObject.SourceRect.Height);
+            Color[] pixelarray = new Color[gameObject.SourceRect.Width * gameObject.SourceRect.Height];
+            Texture.GetData(0, gameObject.SourceRect, pixelarray, 0, pixelarray.Length);
+            RenderTarget.SetData(pixelarray);
         }
 
         public override void UnloadContent()
@@ -56,16 +78,16 @@ namespace Peace_Mill
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(
-                Texture, 
-                gameObject.Position, 
-                sourceRect, 
-                Tint*Alpha, 
-                gameObject.Rotation, 
-                _origin, 
-                gameObject.Scale, 
-                SpriteEffects.None, 
-                0.0f);
+           spriteBatch.Draw(
+               RenderTarget, 
+               gameObject.Position, 
+               gameObject.SourceRect, 
+               Tint*Alpha, 
+               gameObject.Rotation, 
+               _origin, 
+               gameObject.Scale, 
+               SpriteEffects.None, 
+               0.0f);
         }
     }
 }

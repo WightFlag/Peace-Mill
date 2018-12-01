@@ -23,7 +23,7 @@ namespace Peace_Mill
         {
             this.Name = "Collider";
             this.gameObject = gameObject;
-            _collisionBox = new Rectangle(0, 0, 0, 0);
+            _collisionBox = gameObject.Dimensions;
         }        
     }
 }

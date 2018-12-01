@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
 
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+
 namespace Peace_Mill
 {
     class GameObjectManager
     {
-        public Dictionary<GameObject, List<Component>> GameObjects { get; private set; }
+        private Dictionary<GameObject, List<Component>> _gameObjects;
+
+        public Dictionary<GameObject, List<Component>> GameObjects { get => _gameObjects; private set => _gameObjects = value; }
 
         private static GameObjectManager _instance;
 
@@ -36,6 +42,25 @@ namespace Peace_Mill
         }
 
         public void RemoveComponent(GameObject gameObject, Component component)
+        {
+
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            foreach(GameObject g in _gameObjects.Keys)
+            {
+                if(g.IsActive)
+                    g.Update(gameTime);
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
+        }
+
+        public void ToggleActiveObjects()
         {
 
         }

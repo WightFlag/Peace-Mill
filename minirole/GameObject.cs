@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
@@ -21,13 +22,21 @@ namespace Peace_Mill
         private float _rotation;
         private float _scale;
         private Vector2 _velocity;
+        private bool _isActive;
+        private Image _image;
+        private Rectangle _sourceRect;
+
+        public Rectangle Destination = new Rectangle();
 
         public Rectangle Dimensions { get => _dimensions; set => _dimensions = value; }
         public Vector2 Position { get => _position; set => _position = value; }
         public float Rotation { get => _rotation; set => _rotation = value; }
         public float Scale { get => _scale; set => _scale = value; }
         public Vector2 Velocity { get => _velocity; set => _velocity = value; }
-        
+        public bool IsActive { get => _isActive; set => _isActive = value; }
+        public Image Image { get => _image; set => _image = value; }
+        public Rectangle SourceRect { get => _sourceRect; set => _sourceRect = value; }
+               
         #region Constructors
 
         public GameObject()
@@ -65,9 +74,10 @@ namespace Peace_Mill
             Rotation = 0.0f;
             Scale = 1.0f;
             Velocity = Vector2.Zero;
+            IsActive = false;
    
             Transform = new Transform(this);
-            GameObjectManager.Instance.AddComponent(this, Transform);
+            //GameObjectManager.Instance.AddComponent(this, Transform);
         }
 
         #endregion Constructors
@@ -75,6 +85,13 @@ namespace Peace_Mill
         public void Execute(ICommand command)
         {
             command.Execute(this);
+        }
+
+        public bool HasCompnent(string componentName)
+        {
+            if (Components.Keys.Contains(componentName))
+                return true;
+            return false;
         }
 
         public void LoadContent()
@@ -93,6 +110,8 @@ namespace Peace_Mill
 
         public void Update(GameTime gameTime)
         {
+            foreach (Component c in Components.Values)
+                c.Update(gameTime);
         }
 
         //consider revising/modifying this to exclude images assocaited with animators

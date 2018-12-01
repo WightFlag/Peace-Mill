@@ -8,42 +8,25 @@ namespace Peace_Mill
 {
     public class Transform : Component
     {
-        //private float _rotation;
-        //private float _scale;
-        //private Vector2 _velocity;
-
-        //public float GetRotation { get { return _rotation; } private set { _rotation = value; } }
-        //public float GetScale {  get { return _scale; } private set { _scale = value; } }
-        //public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
-
-        public Transform() : base()
-        {
-            this.Name = "Transform";
-            //this._rotation = 0.0f;
-            //this._scale = 1f;
-            //this._velocity = Vector2.Zero;            
-        }
+        //public Transform() : base()
+        //{
+        //    this.Name = "Transform";        
+        //}
 
         public Transform(GameObject gameObject): base()
         {
             this.Name = "Transform";
             this.gameObject = gameObject;
-            //this._rotation = 0.0f;
-            //this._scale = 1f;
-            //this._velocity = Vector2.Zero;
         }
 
         public void Rotate(float rotation)
         {
             gameObject.Execute(new RotateCommand(rotation));
-            //_rotation += rotation * 3.14159f/180;
         }
 
         public void Scale(float scale)
         {
             gameObject.Execute(new ScaleCommand(scale));
-            //gameObject.Scale = scale;
-            //this._scale = scale;
         }
 
         public void Translate(Vector2 distance)

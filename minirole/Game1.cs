@@ -16,6 +16,7 @@ namespace Peace_Mill
 
         Image screenImage;
         GameObject Screen;
+        Animator animator;
 
         public Game1()
         {
@@ -57,14 +58,25 @@ namespace Peace_Mill
             ContentLoader<Image> ImageLoader = new ContentLoader<Image>();
             screenImage = ImageLoader.Load("Load/SplashScreen01.xml");
             //Screen = new GameObject("Image");
-            Screen = new GameObject(screenImage);
-                       
-            Screen.Scale = .11f;
-            Screen.Transform.Rotate(180f);
-            Screen.Transform.Translate(new Vector2(400, 240));
+            //Screen = new GameObject(screenImage);
+            animator = new Animator(screenImage.gameObject, 1920, 1080, Vector2.Zero);
+            animator.gameObject.LoadContent();
+            animator.gameObject.Scale = .10f;
+            //animator.gameObject.Transform.Rotate(180f);
+            animator.gameObject.Transform.Translate(new Vector2(400, 240));
+
+            //screenImage.gameObject.LoadContent();
+
+            //screenImage.gameObject.Scale = .11f;
+            //screenImage.gameObject.Transform.Rotate(180f);
+            //screenImage.gameObject.Transform.Translate(new Vector2(400, 240));
+
+            //Screen.Scale = .11f;
+            //Screen.Transform.Rotate(180f);
+            //Screen.Transform.Translate(new Vector2(400, 240));
 
             //Screen = new GameObject(new Image());
-            Screen.LoadContent();
+            //Screen.LoadContent();
 
             //**************************************************************************************************************************************************************************
 
@@ -94,11 +106,19 @@ namespace Peace_Mill
 
             //**************************************************************************************************************************************************************************
 
-            if (Screen.Position.X > 800 && Screen.Position.Y > 480)
-                Screen.Position = Vector2.Zero;
-            Screen.Transform.Translate(new Vector2(1, 1));
-            Screen.Transform.Rotate(1.0f);
-            Screen.Transform.Scale(0.001f);
+            animator.gameObject.Update(gameTime);
+
+            //if (screenImage.gameObject.Position.X > 800 && screenImage.gameObject.Position.Y > 480)
+            //    screenImage.gameObject.Position = Vector2.Zero;
+            //screenImage.gameObject.Transform.Translate(new Vector2(1, 1));
+            //screenImage.gameObject.Transform.Rotate(1.0f);
+            //screenImage.gameObject.Transform.Scale(0.001f);
+
+            //if (Screen.Position.X > 800 && Screen.Position.Y > 480)
+            //    Screen.Position = Vector2.Zero;
+            //Screen.Transform.Translate(new Vector2(1, 1));
+            //Screen.Transform.Rotate(1.0f);
+            //Screen.Transform.Scale(0.001f);
 
             //**************************************************************************************************************************************************************************
 
@@ -117,8 +137,9 @@ namespace Peace_Mill
 
             spriteBatch.Begin();
 
-            //screenImage.Draw(spriteBatch);
-            Screen.Draw(spriteBatch);
+            animator.gameObject.Draw(spriteBatch);
+            //screenImage.gameObject.Draw(spriteBatch);
+            //Screen.Draw(spriteBatch);
 
             spriteBatch.End();
 
