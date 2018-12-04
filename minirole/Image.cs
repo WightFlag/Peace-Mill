@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class Image : Component, IRenderable
+    public class Image : Component//, IRenderable
     {
         [XmlIgnore]
         public ContentManager Content;
@@ -23,11 +23,14 @@ namespace Peace_Mill
         [XmlIgnore]
         public Texture2D RenderTarget;
 
-        public Color Tint;
-        public float Alpha;
-
         private Animator _animator;
         private Vector2 _origin;
+
+
+        public Color Tint;
+        public float Alpha;
+        public Vector2 Origin { get => _origin; set => _origin = value; }
+
 
         public Animator Animator { get => _animator; }
 
@@ -62,10 +65,6 @@ namespace Peace_Mill
             Texture = Content.Load<Texture2D>(Path);
             gameObject.SourceRect = new Rectangle(0, 0, Texture.Width, Texture.Height);
             _origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
-            RenderTarget = new Texture2D(graphicsDevice, gameObject.SourceRect.Width, gameObject.SourceRect.Height);
-            Color[] pixelarray = new Color[gameObject.SourceRect.Width * gameObject.SourceRect.Height];
-            Texture.GetData(0, gameObject.SourceRect, pixelarray, 0, pixelarray.Length);
-            RenderTarget.SetData(pixelarray);
         }
 
         public override void UnloadContent()
@@ -79,7 +78,7 @@ namespace Peace_Mill
         public void Draw(SpriteBatch spriteBatch)
         {
            spriteBatch.Draw(
-               RenderTarget, 
+               Texture, 
                gameObject.Position, 
                gameObject.SourceRect, 
                Tint*Alpha, 

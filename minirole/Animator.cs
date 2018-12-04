@@ -10,93 +10,92 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class Animator :Component
+    public class Animator :Component, IRenderable
     {
-        //private List<Texture2D> _frames;
+        private List<List<Texture2D>> _frames;
         private Image _spriteSheet;
         private Vector2 _frameSize;
         private Vector2 _frameSet;
-        private Vector2 _currentFrameIndex;
+        private Vector2 _currentFrameIndex;        
 
-        //public List<Texture2D> Frames { get => _frames; private set => _frames = value; }
+        public List<List<Texture2D>> Frames { get => _frames; private set => _frames = value; }
         public Image Spritesheet { get => _spriteSheet; }
         public Vector2 FrameSize { get => _frameSize; }
         public Vector2 FrameSet { get => _frameSet; }
         public Vector2 CurrentFrameIndex { get => _currentFrameIndex; }
 
-        int i = 0;
+        
 
         public Animator(GameObject gameObject, int tileWidth, int tileHeight, Vector2 initialFrameIndex):base()
         {
             this.Name = "Animator";
-            this.gameObject = gameObject;            
+            this.gameObject = gameObject;
 
+            _frames = new List<List<Texture2D>>();
             _spriteSheet = gameObject.HasCompnent("Image")? (Image)gameObject.Components["Image"]: new Image(gameObject);
             _frameSize = new Vector2(tileWidth, tileHeight);
             _frameSet = Vector2.Zero;
             _currentFrameIndex = initialFrameIndex;
+            _currentFrameIndex = new Vector2(0, 0);
             GameObjectManager.Instance.AddComponent(gameObject, this);
         }
 
         public void AdvanceFrame()
         {
-            _currentFrameIndex.X = _currentFrameIndex.X == FrameSet.X ? 0 : _currentFrameIndex.X + 1;
+            //_currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
+            if (_currentFrameIndex.X < _frameSet.X)
+                _currentFrameIndex.X++;
+            else
+            {
+                _currentFrameIndex.X = 0;
+                SetFrameSequence(_currentFrameIndex.Y + 1);
+            }
         }
 
-        public void SetFrameSequence(int row)
+        public void SetFrameSequence(float row)
         {
-            _currentFrameIndex.Y = row;
+            _currentFrameIndex.Y = row > _frameSet.Y ? 0 : row;
         }
 
         public override void LoadContent()
         {//establishes the frameset and sourceRect for render once the image has been loaded
-            _frameSet = new Vector2(gameObject.Image.Texture.Width / FrameSize.X, gameObject.Image.Texture.Width / FrameSize.Y);
+            _frameSet = new Vector2(gameObject.Image.Texture.Width / FrameSize.X-1, gameObject.Image.Texture.Height / FrameSize.Y-1);
             gameObject.SourceRect = new Rectangle((int)(_currentFrameIndex.X * FrameSize.X), (int)(_currentFrameIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
+
+            var renderer = new Renderer();
+            for (_currentFrameIndex.X = 0; _currentFrameIndex.X <= _frameSet.X; _currentFrameIndex.X++)
+            {
+                _frames.Add(new List<Texture2D>());
+                for (_currentFrameIndex.Y = 0; _currentFrameIndex.Y <= _frameSet.Y; _currentFrameIndex.Y++)
+                {
+                    var image = renderer.Draw(new Rectangle((int)(_currentFrameIndex.X * _frameSize.X), (int)(_currentFrameIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), gameObject.Image);
+                    _frames[(int)_currentFrameIndex.X].Add(image);
+                }
+            }
+            _currentFrameIndex.X = 0;
+            _currentFrameIndex.Y = 0;
+
         }
 
         public override void Update(GameTime gameTime)
         {
-            //current problem is the need to render the section of the image that I am drawing as sourcerect to a texture and then draw that texture to the sourcerect, then move the sourcerect
-            //delete exploratory garbage and fix up.
+            AdvanceFrame();
+            //gameObject.SourceRect = new Rectangle((int)(_currentFrameIndex.X * FrameSize.X), (int)(_currentFrameIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
+            gameObject.Position = new Vector2(_currentFrameIndex.X * _frameSize.X * gameObject.Scale + 406, _currentFrameIndex.Y * _frameSize.Y * gameObject.Scale + 224); 
+        }
 
-            //AdvanceFrame();
-            if(gameTime.TotalGameTime.TotalSeconds >2)
-            {
-                switch (i)
-                {
-                    case 0:
-                        _currentFrameIndex = new Vector2(0, 0);
-                        break;
-                    case 1:
-                        _currentFrameIndex = new Vector2(1, 0);
-                        break;
-                    case 2:
-                        _currentFrameIndex = new Vector2(1, 1);
-                        break;
-                    case 3:
-                        _currentFrameIndex = new Vector2(0, 1);
-                        break;
-
-                }
-                gameObject.SourceRect = new Rectangle((int)(_currentFrameIndex.X * FrameSize.X), (int)(_currentFrameIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
-                switch (i)
-                {
-                    case 0:
-                        gameObject.Position = new Vector2(406, 224);
-                        break;
-                    case 1:
-                        gameObject.Position = new Vector2(406 + 384 / 2, 224);
-                        break;
-                    case 2:
-                        gameObject.Position = new Vector2(406 + 384 / 2, 224 + 216 / 2);
-                        break;
-                    case 3:
-                        gameObject.Position = new Vector2(406, 224 + 216 / 2);
-                        break;
-                }
-                i = i > 2 ? 0 : i + 1;
-            }
-
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw( 
+                _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y],
+                gameObject.Position,
+                gameObject.SourceRect,
+                gameObject.Image.Tint * gameObject.Image.Alpha,
+                gameObject.Rotation,
+                gameObject.Image.Origin,
+                gameObject.Scale,
+                SpriteEffects.None,
+                0.0f);
         }
     }
 }

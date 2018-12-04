@@ -46,6 +46,7 @@
     <Compile Include="CollisionManager.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Discarded\ISize.cs" />
+    <Compile Include="Renderer.cs" />
     <Compile Include="RotateCommand.cs" />
     <Compile Include="ScaleCommand.cs" />
     <Compile Include="TranslateCommand.cs" />
