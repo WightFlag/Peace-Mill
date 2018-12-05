@@ -16,7 +16,8 @@ namespace Peace_Mill
         private Image _spriteSheet;
         private Vector2 _frameSize;
         private Vector2 _frameSet;
-        private Vector2 _currentFrameIndex;        
+        private Vector2 _currentFrameIndex;
+        private Renderer _renderer;
 
         public List<List<Texture2D>> Frames { get => _frames; private set => _frames = value; }
         public Image Spritesheet { get => _spriteSheet; }
@@ -42,14 +43,20 @@ namespace Peace_Mill
 
         public void AdvanceFrame()
         {
-            //_currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
-            if (_currentFrameIndex.X < _frameSet.X)
-                _currentFrameIndex.X++;
-            else
-            {
-                _currentFrameIndex.X = 0;
-                SetFrameSequence(_currentFrameIndex.Y + 1);
-            }
+            _currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
+            
+            //below code is specific to current splashscreen test animation. NEXT: paramterized gameObject-specific animators utilizing command pattern w/ type object.
+            //for example change this AdvanceFrame function to receive an ICommand and have a splash-screen animator object with a script component send an ICommand
+            //to this function, which receives the animator as a parameter via "this" statement and then advances through framesets as desired. This will allow
+            //users of the engine app to manually design animations if default (which you still need to re-implement and segregate) animations are inadequate.
+
+            //if (_currentFrameIndex.X < _frameSet.X)
+            //    _currentFrameIndex.X++;
+            //else
+            //{
+            //    _currentFrameIndex.X = 0;
+            //    SetFrameSequence(_currentFrameIndex.Y + 1);
+            //}
         }
 
         public void SetFrameSequence(float row)
@@ -62,13 +69,13 @@ namespace Peace_Mill
             _frameSet = new Vector2(gameObject.Image.Texture.Width / FrameSize.X-1, gameObject.Image.Texture.Height / FrameSize.Y-1);
             gameObject.SourceRect = new Rectangle((int)(_currentFrameIndex.X * FrameSize.X), (int)(_currentFrameIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
 
-            var renderer = new Renderer();
+            _renderer = new Renderer(gameObject);
             for (_currentFrameIndex.X = 0; _currentFrameIndex.X <= _frameSet.X; _currentFrameIndex.X++)
             {
                 _frames.Add(new List<Texture2D>());
                 for (_currentFrameIndex.Y = 0; _currentFrameIndex.Y <= _frameSet.Y; _currentFrameIndex.Y++)
                 {
-                    var image = renderer.Draw(new Rectangle((int)(_currentFrameIndex.X * _frameSize.X), (int)(_currentFrameIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), gameObject.Image);
+                    var image = _renderer.DrawFrame(new Rectangle((int)(_currentFrameIndex.X * _frameSize.X), (int)(_currentFrameIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), gameObject.Image);
                     _frames[(int)_currentFrameIndex.X].Add(image);
                 }
             }
@@ -86,16 +93,7 @@ namespace Peace_Mill
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw( 
-                _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y],
-                gameObject.Position,
-                gameObject.SourceRect,
-                gameObject.Image.Tint * gameObject.Image.Alpha,
-                gameObject.Rotation,
-                gameObject.Image.Origin,
-                gameObject.Scale,
-                SpriteEffects.None,
-                0.0f);
+            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y]);
         }
     }
 }

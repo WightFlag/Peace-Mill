@@ -14,12 +14,13 @@ namespace Peace_Mill
     {
         private GraphicsDevice _graphicsDevice;
 
-        public Renderer()
+        public Renderer(GameObject gameObject)
         {
             _graphicsDevice = ComponentManager.Instance.graphicsDevice;
+            this.gameObject = gameObject;
         }
 
-         public Texture2D Draw(Rectangle sourceRect, Image image)
+        public Texture2D DrawFrame(Rectangle sourceRect, Image image)
         {
 
             var RenderTarget = new Texture2D(_graphicsDevice, sourceRect.Width, sourceRect.Height);
@@ -28,6 +29,20 @@ namespace Peace_Mill
             RenderTarget.SetData(pixelarray);
 
             return RenderTarget;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        {
+            spriteBatch.Draw(
+                texture,
+                gameObject.Position,
+                gameObject.SourceRect,
+                gameObject.Image.Tint * gameObject.Image.Alpha,
+                gameObject.Rotation,
+                gameObject.Image.Origin,
+                gameObject.Scale,
+                SpriteEffects.None,
+                0.0f);
         }
     }
 }

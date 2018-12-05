@@ -75,18 +75,18 @@ namespace Peace_Mill
         {
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-           spriteBatch.Draw(
-               Texture, 
-               gameObject.Position, 
-               gameObject.SourceRect, 
-               Tint*Alpha, 
-               gameObject.Rotation, 
-               _origin, 
-               gameObject.Scale, 
-               SpriteEffects.None, 
-               0.0f);
-        }
+        //public void Draw(SpriteBatch spriteBatch)
+        //{
+        //   spriteBatch.Draw(
+        //       Texture, 
+        //       gameObject.Position, 
+        //       gameObject.SourceRect, 
+        //       Tint*Alpha, 
+        //       gameObject.Rotation, 
+        //       _origin, 
+        //       gameObject.Scale, 
+        //       SpriteEffects.None, 
+        //       0.0f);
+        //}
     }
 }
