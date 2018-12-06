@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class Animator :Component, IRenderable
+    public class Animator : Component, IRenderable
     {
         private List<List<Texture2D>> _frames;
         private Image _spriteSheet;
@@ -25,20 +25,50 @@ namespace Peace_Mill
         public Vector2 FrameSet { get => _frameSet; }
         public Vector2 CurrentFrameIndex { get => _currentFrameIndex; }
 
-        
-
-        public Animator(GameObject gameObject, int tileWidth, int tileHeight, Vector2 initialFrameIndex):base()
+        public Animator()
         {
             this.Name = "Animator";
-            this.gameObject = gameObject;
+        }
 
+        //public Animator(GameObject gameObject, int tileWidth, int tileHeight, Vector2 initialFrameIndex) : base()
+        //{
+        //    this.Name = "Animator";
+        //    this.gameObject = gameObject;
+
+        //    _frames = new List<List<Texture2D>>();
+        //    //_spriteSheet = gameObject.HasCompnent("Image")? (Image)gameObject.Components["Image"]: new Image(gameObject);
+        //    _spriteSheet = gameObject.Image == null ? new Image(gameObject) : gameObject.Image;
+        //    _frameSize = new Vector2(tileWidth, tileHeight);
+        //    _frameSet = Vector2.Zero;
+        //    _currentFrameIndex = initialFrameIndex;
+        //    _currentFrameIndex = new Vector2(0, 0);
+        //    //GameObjectManager.Instance.AddComponent(gameObject, this);
+        //    this.gameObject.Animator = this;
+        //}
+
+        public void Initialize(int tileWidth, int tileHeight, Vector2 initialFrameIndex)
+        {
             _frames = new List<List<Texture2D>>();
-            _spriteSheet = gameObject.HasCompnent("Image")? (Image)gameObject.Components["Image"]: new Image(gameObject);
+            //_spriteSheet = gameObject.HasCompnent("Image")? (Image)gameObject.Components["Image"]: new Image(gameObject);
+
+
+            /////////////////////////////////////////
+            //ContentLoader<Image> ImageLoader = new ContentLoader<Image>();
+
+            //the 'else' portion of the below ternary expression does not work when called from within this class, but does work from Game1 for some reason.
+            _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
+            //_spriteSheet.gameObject = this.gameObject;
+            _spriteSheet.LoadContent();
+            _spriteSheet.gameObject.Image = _spriteSheet;
+            //ImageLoader.Load("Load/SplashScreen01.xml");
+            ///////////////////////////////////////
+
+
+            //_spriteSheet = gameObject.Image == null ? new Image(gameObject) : gameObject.Image;
             _frameSize = new Vector2(tileWidth, tileHeight);
             _frameSet = Vector2.Zero;
             _currentFrameIndex = initialFrameIndex;
             _currentFrameIndex = new Vector2(0, 0);
-            GameObjectManager.Instance.AddComponent(gameObject, this);
         }
 
         public void AdvanceFrame()
@@ -66,6 +96,11 @@ namespace Peace_Mill
 
         public override void LoadContent()
         {//establishes the frameset and sourceRect for render once the image has been loaded
+
+            //////////////////////
+            //gameObject.Image.LoadContent();
+            /////////////////////////
+
             _frameSet = new Vector2(gameObject.Image.Texture.Width / FrameSize.X-1, gameObject.Image.Texture.Height / FrameSize.Y-1);
             gameObject.SourceRect = new Rectangle((int)(_currentFrameIndex.X * FrameSize.X), (int)(_currentFrameIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
 

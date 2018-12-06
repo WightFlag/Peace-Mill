@@ -41,10 +41,8 @@ namespace Peace_Mill
             Path = String.Empty;
             Tint = Color.White;
             Alpha = 1.0f;
-            gameObject = new GameObject(this)
-            {
-                Image = this
-            };
+
+            Path = "bclog";
         }
 
         public Image(GameObject gameObject) : base()
@@ -55,9 +53,13 @@ namespace Peace_Mill
             Tint = Color.White;
             Alpha = 1.0f;
             this.gameObject = gameObject;
-            gameObject.Image = this;
-            GameObjectManager.Instance.AddComponent(gameObject, this);
+
+            //gameObject.Image = this;
+            //GameObjectManager.Instance.AddComponent(gameObject, this);
+            //Path = "bclog";
         }
+
+
 
         public override void LoadContent()
         {

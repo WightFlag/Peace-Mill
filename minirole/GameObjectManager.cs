@@ -21,25 +21,25 @@ namespace Peace_Mill
                 if (_instance == null)
                 {
                     _instance = new GameObjectManager();
-                    _instance.GameObjects = new Dictionary<GameObject, List<Component>>();                    
+                    _instance.GameObjects = new Dictionary<GameObject, List<Component>>();
                 }
                 return _instance;
             }
         }
-        
-        public void AddComponent(GameObject gameObject, Component component)
-        {
-            component.gameObject = gameObject;
-            gameObject.Components.Add(component.Name,component);
-        }
 
-        public void AddComponent(GameObject gameObject, string componentName)
-        {
-            var T = ComponentManager.Instance.GetComponentType(componentName);
-            Component component = (Component)ComponentManager.Instance.Instantiate(T);
-            component.gameObject = gameObject;
-            gameObject.Components.Add(component.Name, component);
-        }
+        //public void AddComponent(GameObject gameObject, Component component)
+        //{
+        //    component.gameObject = gameObject;
+        //    gameObject.Components.Add(component.Name, component);
+        //}
+
+        //public void AddComponent(GameObject gameObject, string componentName)
+        //{
+        //    var T = ComponentManager.Instance.GetComponentType(componentName);
+        //    Component component = (Component)ComponentManager.Instance.Instantiate(T);
+        //    component.gameObject = gameObject;
+        //    gameObject.Components.Add(component.Name, component);
+        //}
 
         public void RemoveComponent(GameObject gameObject, Component component)
         {
@@ -48,9 +48,9 @@ namespace Peace_Mill
 
         public void Update(GameTime gameTime)
         {
-            foreach(GameObject g in _gameObjects.Keys)
+            foreach (GameObject g in _gameObjects.Keys)
             {
-                if(g.IsActive)
+                if (g.IsActive)
                     g.Update(gameTime);
             }
         }

@@ -21,9 +21,6 @@ namespace Peace_Mill
 
         public Component ()
         {
-            _isActive = true;
-            _name = "Name";
-            _id = ComponentManager.Instance.AddGameComponent(this);
         }
 
         public virtual void LoadContent()

@@ -18,6 +18,7 @@ namespace Peace_Mill
         {
             _graphicsDevice = ComponentManager.Instance.graphicsDevice;
             this.gameObject = gameObject;
+            this.gameObject.Renderer = this;
         }
 
         public Texture2D DrawFrame(Rectangle sourceRect, Image image)

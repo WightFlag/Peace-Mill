@@ -55,12 +55,18 @@ namespace Peace_Mill
             //screenImage = new Image();
             //screenImage.LoadContent(Content);
 
-            ContentLoader<Image> ImageLoader = new ContentLoader<Image>();
-            screenImage = ImageLoader.Load("Load/SplashScreen01.xml");
+            //ContentLoader<Image> ImageLoader = new ContentLoader<Image>();
+            //screenImage = ImageLoader.Load("Load/SplashScreen01.xml");
             //Screen = new GameObject("Image");
             //Screen = new GameObject(screenImage);
-            animator = new Animator(screenImage.gameObject, 1920, 1080, Vector2.Zero);
+
+            Screen = new GameObject();
+            screenImage = Screen.AddCompnent<Image>();
+            animator = Screen.AddCompnent<Animator>();
+            animator.Initialize(1920, 1080, Vector2.Zero);
+            //animator = new Animator(screenImage.gameObject, 1920, 1080, Vector2.Zero);
             animator.gameObject.LoadContent();
+            //animator.gameObject.Image.LoadContent();
             animator.gameObject.Scale = .10f;
             //animator.gameObject.Transform.Rotate(180f);
             animator.gameObject.Transform.Translate(new Vector2(400, 240));

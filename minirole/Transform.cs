@@ -8,12 +8,12 @@ namespace Peace_Mill
 {
     public class Transform : Component
     {
-        //public Transform() : base()
-        //{
-        //    this.Name = "Transform";        
-        //}
+        public Transform() 
+        {
+            this.Name = "Transform";        
+        }
 
-        public Transform(GameObject gameObject): base()
+        public Transform(GameObject gameObject)
         {
             this.Name = "Transform";
             this.gameObject = gameObject;

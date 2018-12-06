@@ -36,7 +36,7 @@ namespace Peace_Mill
             int id = this.GameComoponents.Count;
             this.GameComoponents.Add(id, component);
             return id;
-        }        
+        }
 
         public Type GetComponentType(string component)
         {
@@ -48,7 +48,7 @@ namespace Peace_Mill
 
         public object Instantiate(Type type)
         {
-            return Activator.CreateInstance(type);  
+            return Activator.CreateInstance(type);
         }
 
 
