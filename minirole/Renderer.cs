@@ -12,13 +12,14 @@ namespace Peace_Mill
 {
     public class Renderer : Component
     {
+        private Image _image;
         private GraphicsDevice _graphicsDevice;
 
         public Renderer(GameObject gameObject)
         {
             _graphicsDevice = ComponentManager.Instance.graphicsDevice;
             this.gameObject = gameObject;
-            this.gameObject.Renderer = this;
+            _image = gameObject.GetComponent<Image>();
         }
 
         public Texture2D DrawFrame(Rectangle sourceRect, Image image)
@@ -38,9 +39,9 @@ namespace Peace_Mill
                 texture,
                 gameObject.Position,
                 gameObject.SourceRect,
-                gameObject.Image.Tint * gameObject.Image.Alpha,
+                _image.Tint * _image.Alpha,
                 gameObject.Rotation,
-                gameObject.Image.Origin,
+                _image.Origin,
                 gameObject.Scale,
                 SpriteEffects.None,
                 0.0f);

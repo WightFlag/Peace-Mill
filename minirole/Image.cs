@@ -21,29 +21,17 @@ namespace Peace_Mill
         [XmlIgnore]
         public Texture2D Texture;
         [XmlIgnore]
-        public Texture2D RenderTarget;
+        //public Texture2D RenderTarget;
 
-        private Animator _animator;
+        //private Animator _animator;
         private Vector2 _origin;
 
-
+        
         public Color Tint;
         public float Alpha;
         public Vector2 Origin { get => _origin; set => _origin = value; }
-
-
-        public Animator Animator { get => _animator; }
-
-        public Image() :base()
-        {
-            Name = "Image";
-            graphicsDevice = ComponentManager.Instance.graphicsDevice;
-            Path = String.Empty;
-            Tint = Color.White;
-            Alpha = 1.0f;
-
-            Path = "bclog";
-        }
+        
+        //public Animator Animator { get => _animator; }
 
         public Image(GameObject gameObject) : base()
         {
@@ -54,12 +42,8 @@ namespace Peace_Mill
             Alpha = 1.0f;
             this.gameObject = gameObject;
 
-            //gameObject.Image = this;
-            //GameObjectManager.Instance.AddComponent(gameObject, this);
-            //Path = "bclog";
+            Path = "bclog";
         }
-
-
 
         public override void LoadContent()
         {
@@ -76,19 +60,5 @@ namespace Peace_Mill
         public override void Update(GameTime gameTime)
         {
         }
-
-        //public void Draw(SpriteBatch spriteBatch)
-        //{
-        //   spriteBatch.Draw(
-        //       Texture, 
-        //       gameObject.Position, 
-        //       gameObject.SourceRect, 
-        //       Tint*Alpha, 
-        //       gameObject.Rotation, 
-        //       _origin, 
-        //       gameObject.Scale, 
-        //       SpriteEffects.None, 
-        //       0.0f);
-        //}
     }
 }

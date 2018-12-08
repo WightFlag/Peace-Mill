@@ -11,11 +11,7 @@ namespace Peace_Mill
     public class GameObject
     {
         [XmlElement("Component")]
-        //public Dictionary<string, Component> Components;
         public List<Component> Renderables;
-
-        //Consider adding default values and method for preserving them. 
-        //Also consider changing from ordinary "get" assignment "=" to a plus-get assignment "+=" in the transform commands.
 
         private Rectangle _dimensions;
         private Vector2 _position;
@@ -25,10 +21,7 @@ namespace Peace_Mill
         private Transform _transform;
 
         private bool _isActive;
-        private Image _image;
         private Rectangle _sourceRect;
-        private Animator _animator;
-        private Renderer _renderer;
         private Dictionary<Type,object> _components;
 
         public Rectangle Dimensions { get => _dimensions; set => _dimensions = value; }
@@ -37,13 +30,10 @@ namespace Peace_Mill
         public float Scale { get => _scale; set => _scale = value; }
         public Vector2 Velocity { get => _velocity; set => _velocity = value; }
         public Transform Transform { get => _transform; set => _transform = value; }
-        public Dictionary<Type, object> Components { get => _components; set => _components = value; }
 
         public bool IsActive { get => _isActive; set => _isActive = value; }
-        public Image Image { get => _image; set => _image = value; }
         public Rectangle SourceRect { get => _sourceRect; set => _sourceRect = value; }
-        public Animator Animator { get => _animator; set => _animator = value; }
-        public Renderer Renderer { get => _renderer; set => _renderer = value; }
+        public Dictionary<Type, object> Components { get => _components; set => _components = value; }
 
                
         #region Constructors
@@ -53,30 +43,9 @@ namespace Peace_Mill
             InitializePreDefinedComponents();
         }
 
-        public GameObject(params Component[] components)
-        {
-            InitializePreDefinedComponents();
-
-            foreach (Component component in components)
-            {
-                //GameObjectManager.Instance.AddComponent(this, component);
-            }
-        }
-
-        public GameObject(params string[] components)
-        {
-            InitializePreDefinedComponents();
-
-            foreach (string component in components)
-            {
-                //GameObjectManager.Instance.AddComponent(this, component);
-            }
-        }
-
         private void InitializePreDefinedComponents()
         {
             _components = new Dictionary<Type, object>();
-            //Components = new Dictionary<string, Component>();
             Components = new Dictionary<Type, object>();
             Renderables = new List<Component>();
 
@@ -87,9 +56,7 @@ namespace Peace_Mill
             Velocity = Vector2.Zero;
             IsActive = false;
    
-            Transform = new Transform(this);
-            //GameObjectManager.Instance.AddComponent(this, Transform);
-           
+            Transform = new Transform(this);          
         }
 
         #endregion Constructors
@@ -98,13 +65,6 @@ namespace Peace_Mill
         {
             command.Execute(this);
         }
-
-        //public bool HasCompnent(string componentName)
-        //{
-        //    if (Components.Keys.Contains(componentName))
-        //        return true;
-        //    return false;
-        //}
 
         public bool HasComponent<T>()
         {
@@ -120,7 +80,7 @@ namespace Peace_Mill
         public T AddCompnent<T>() where T: Component
         {
             Type type = typeof(T);
-            T component = (T)ComponentManager.Instance.Instantiate(type);
+            T component = (T)ComponentManager.Instance.Instantiate(type, this);
             component.gameObject = this;
             _components.Add(type, component);
             return (T)component;
@@ -136,14 +96,6 @@ namespace Peace_Mill
             }
         }
 
-
-
-        //public void LoadContent()
-        //{
-        //    Image.LoadContent();
-        //    Animator.LoadContent();
-        //}
-
         public void UnloadContent()
         {
         }
@@ -154,15 +106,6 @@ namespace Peace_Mill
                 c.Update(gameTime);
         }
 
-        //public void Update(GameTime gameTime)
-        //{
-        //    Transform.Update(gameTime);
-        //    Image.Update(gameTime);
-        //    Animator.Update(gameTime);
-        //    Renderer.Update(gameTime);
-        //}
-
-        //consider revising/modifying this to exclude images assocaited with animators
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (IRenderable ir in Renderables)
@@ -170,10 +113,5 @@ namespace Peace_Mill
                 ir.Draw(spriteBatch);
             }
         }
-
-        //public void Draw(SpriteBatch spriteBatch)
-        //{
-        //    Animator.Draw(spriteBatch);
-        //}
     }
 }

@@ -46,13 +46,16 @@
     <Compile Include="CollisionManager.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Discarded\ISize.cs" />
+    <Compile Include="InputController.cs" />
+    <Compile Include="InputHandler.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="RotateCommand.cs" />
     <Compile Include="ScaleCommand.cs" />
+    <Compile Include="ScreenInputController.cs" />
     <Compile Include="TranslateCommand.cs" />
     <Compile Include="Discarded\Velocity2.cs" />
     <Compile Include="Collider.cs" />
-    <Compile Include="GameObjectManager.cs" />
+    <Compile Include="Discarded\GameObjectManager.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="ComponentManager.cs" />
     <Compile Include="ContentLoader.cs" />

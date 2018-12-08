@@ -31,13 +31,6 @@ namespace Peace_Mill
             }
         }
 
-        public int AddGameComponent(Component component)
-        {
-            int id = this.GameComoponents.Count;
-            this.GameComoponents.Add(id, component);
-            return id;
-        }
-
         public Type GetComponentType(string component)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -46,11 +39,10 @@ namespace Peace_Mill
             return type;
         }
 
-        public object Instantiate(Type type)
+        public object Instantiate(Type type, GameObject gameObject)
         {
-            return Activator.CreateInstance(type);
+            var constructors = type.GetConstructors();
+            return constructors[0].Invoke(new object[] { gameObject });
         }
-
-
     }
 }
