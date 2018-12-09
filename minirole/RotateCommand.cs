@@ -15,7 +15,7 @@ namespace Peace_Mill
             _rotation = rotation;
         }
 
-        public void Execute(GameObject gameObject)
+        public override void Execute(GameObject gameObject)
         {
            gameObject.Rotation += _rotation * 3.14159f / 180;
         }

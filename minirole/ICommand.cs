@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Peace_Mill
 {
-    public interface ICommand
+    public abstract class ICommand
     {
-        void Execute(GameObject gameObject);
+        private string _name;
+        public string Name { get => _name; set => _name = value; }
+
+        public abstract void Execute(GameObject gameObject);
     }
 }

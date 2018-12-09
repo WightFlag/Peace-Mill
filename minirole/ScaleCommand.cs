@@ -15,7 +15,7 @@ namespace Peace_Mill
             _scale = scale;
         }
 
-        public void Execute(GameObject gameObject)
+        public override void Execute(GameObject gameObject)
         {
             gameObject.Scale += _scale;
         }

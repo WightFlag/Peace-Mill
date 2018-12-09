@@ -14,7 +14,7 @@ namespace Peace_Mill
 
         public TranslateCommand(Vector2 movement) { _movement = movement; }
 
-        public void Execute(GameObject gameObject)
+        public override void Execute(GameObject gameObject)
         {
             gameObject.Position += _movement;
         }

@@ -62,7 +62,7 @@ namespace Peace_Mill
 
             animator.gameObject.LoadContent();
             animator.gameObject.Scale = .10f;
-            animator.gameObject.Transform.Translate(new Vector2(400, 240));
+            //animator.gameObject.Transform.Translate(new Vector2(240, 240));
 
 
             //**************************************************************************************************************************************************************************

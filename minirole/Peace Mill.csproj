@@ -47,7 +47,12 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="Discarded\ISize.cs" />
     <Compile Include="InputController.cs" />
+    <Compile Include="InputEventArgs.cs" />
     <Compile Include="InputHandler.cs" />
+    <Compile Include="KeyBinding.cs" />
+    <Compile Include="KeyMap.cs" />
+    <Compile Include="LocalTransform.cs" />
+    <Compile Include="Move_Command.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="RotateCommand.cs" />
     <Compile Include="ScaleCommand.cs" />

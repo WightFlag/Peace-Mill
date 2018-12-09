@@ -12,18 +12,34 @@ namespace Peace_Mill
         {
             this.Name = "InputController";
             this.gameObject = gameObject;
+
+            //InputHandler.Instance().KeyPressedEvent += OnKeyPressed;
+            //InputHandler.Instance().KeyDownEvent += OnKeyDown;
+            //InputHandler.Instance().KeyReleasedEvent += OnKeyReleased;
+            //InputHandler.Instance().KeyStateChange += OnKeyPressed;
+            InputHandler.Instance().KeyStateChanged += OnKeyStateChanged;
         }
 
-        public virtual void OnKeyPressed(object sender, EventArgs eventArgs)
+        public virtual void OnKeyStateChanged(object sender, EventArgs eventArgs)
         {
         }
 
-        public virtual void OnKeyDown(object sender, EventArgs eventArgs)
-        {
-        }
+        //public virtual void OnKeyPressed(object sender, InputEventArgs inputEventArgs)
+        //{
+        //}
 
-        public virtual void OnKeyReleased(object sender, EventArgs eventArgs)
-        {
-        }
+
+        //public virtual void OnKeyPressed(object sender, EventArgs eventArgs)
+        //{
+
+        //}
+
+        //public virtual void OnKeyDown(object sender, EventArgs eventArgs)
+        //{
+        //}
+
+        //public virtual void OnKeyReleased(object sender, EventArgs eventArgs)
+        //{
+        //}
     }
 }

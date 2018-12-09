@@ -18,12 +18,14 @@ namespace Peace_Mill
         private Vector2 _frameSet;
         private Vector2 _currentFrameIndex;
         private Renderer _renderer;
+        private Vector2 _localOffset;
 
         public List<List<Texture2D>> Frames { get => _frames; private set => _frames = value; }
         public Image Spritesheet { get => _spriteSheet; }
         public Vector2 FrameSize { get => _frameSize; }
         public Vector2 FrameSet { get => _frameSet; }
         public Vector2 CurrentFrameIndex { get => _currentFrameIndex; }
+        public Vector2 LocalOffset { get => _localOffset; }
 
         public Animator (GameObject gameObject)
         {
@@ -78,12 +80,12 @@ namespace Peace_Mill
         public override void Update(GameTime gameTime)
         {
            AdvanceFrame();
-            //gameObject.Position = new Vector2(_currentFrameIndex.X * _frameSize.X * gameObject.Scale + 406, _currentFrameIndex.Y * _frameSize.Y * gameObject.Scale + 224); 
+           _localOffset = new Vector2(_currentFrameIndex.X * _frameSize.X * gameObject.Scale, _currentFrameIndex.Y * _frameSize.Y * gameObject.Scale); 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y]);
+            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _localOffset);
         }
     }
 }

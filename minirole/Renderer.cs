@@ -33,15 +33,15 @@ namespace Peace_Mill
             return RenderTarget;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 localOffset)
         {
             spriteBatch.Draw(
                 texture,
-                gameObject.Position,
+                gameObject.Position + localOffset,
                 gameObject.SourceRect,
                 _image.Tint * _image.Alpha,
                 gameObject.Rotation,
-                _image.Origin,
+                Vector2.Zero,
                 gameObject.Scale,
                 SpriteEffects.None,
                 0.0f);
