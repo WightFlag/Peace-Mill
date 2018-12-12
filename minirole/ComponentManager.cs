@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
@@ -10,6 +11,7 @@ namespace Peace_Mill
 {
     class ComponentManager
     {
+        public GraphicsDeviceManager graphicsDeviceManager;
         public GraphicsDevice graphicsDevice;
         public ContentManager Content;
         public List<Component> AvailableComponents { get; private set; } // available component types
@@ -43,6 +45,7 @@ namespace Peace_Mill
         {
             var constructors = type.GetConstructors();
             return constructors[0].Invoke(new object[] { gameObject });
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Peace_Mill
 {
-    class ScaleCommand :ICommand
+    class ScaleCommand :Command
     {
         private float _scale;
 
@@ -18,6 +18,11 @@ namespace Peace_Mill
         public override void Execute(GameObject gameObject)
         {
             gameObject.Scale += _scale;
+        }
+
+        public override void Terminate(GameObject gameObject)
+        {
+            throw new NotImplementedException();
         }
     }
 }

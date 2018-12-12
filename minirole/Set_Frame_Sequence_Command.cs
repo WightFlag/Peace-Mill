@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.Xna.Framework;
+
 namespace Peace_Mill
 {
-    class RotateCommand : Command
+    public class Set_Frame_Sequence_Command : Command
     {
-        private float _rotation;
 
-        public RotateCommand (float rotation)
+        public Set_Frame_Sequence_Command()
         {
-            _rotation = rotation;
         }
 
         public override void Execute(GameObject gameObject)
         {
-           gameObject.Rotation += _rotation * 3.14159f / 180;
         }
 
         public override void Terminate(GameObject gameObject)

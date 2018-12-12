@@ -12,6 +12,7 @@ namespace Peace_Mill
 {
     public class Animator : Component, IRenderable
     {
+        //private T animationType;
         private List<List<Texture2D>> _frames;
         private Image _spriteSheet;
         private Vector2 _frameSize;
@@ -31,6 +32,10 @@ namespace Peace_Mill
         {
             this.Name = "Animator";
             this.gameObject = gameObject;
+
+            //var type = typeof(T);
+            //var constructor = type.GetConstructors();
+            //animationType = (T)constructor[0].Invoke(new object[] { gameObject});
         }
 
         public void Initialize(int tileWidth, int tileHeight, Vector2 initialFrameIndex)
@@ -49,6 +54,10 @@ namespace Peace_Mill
         public void AdvanceFrame()
         {
             _currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
+            if(_currentFrameIndex.X == _frameSet.X)
+            {
+                _currentFrameIndex.Y = _currentFrameIndex.Y < _frameSet.Y ? _currentFrameIndex.Y + 1 : 0;
+            }
         }
 
         public void SetFrameSequence(float row)
@@ -80,7 +89,7 @@ namespace Peace_Mill
         public override void Update(GameTime gameTime)
         {
            AdvanceFrame();
-           _localOffset = new Vector2(_currentFrameIndex.X * _frameSize.X * gameObject.Scale, _currentFrameIndex.Y * _frameSize.Y * gameObject.Scale); 
+           _localOffset = new Vector2((_currentFrameIndex.X * _frameSize.X - (_frameSize.X * (_frameSet.X + 1)/2)) * gameObject.Scale , (_currentFrameIndex.Y * _frameSize.Y - (_frameSize.Y * (_frameSet.Y+1)/2)) * gameObject.Scale); 
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -6,40 +6,56 @@ using System.Threading.Tasks;
 
 namespace Peace_Mill
 {
-    public abstract class InputController :Component
-    {   
+    public class InputController <T> :Component where T:Controller
+    {
+        public T ObjectType;
+        
         public InputController(GameObject gameObject)
         {
+            var type = typeof(T);
+            var constructors = type.GetConstructors();
+            ObjectType = (T)constructors[0].Invoke(new object[] {gameObject });
+
             this.Name = "InputController";
             this.gameObject = gameObject;
 
-            //InputHandler.Instance().KeyPressedEvent += OnKeyPressed;
-            //InputHandler.Instance().KeyDownEvent += OnKeyDown;
-            //InputHandler.Instance().KeyReleasedEvent += OnKeyReleased;
-            //InputHandler.Instance().KeyStateChange += OnKeyPressed;
             InputHandler.Instance().KeyStateChanged += OnKeyStateChanged;
+            InputHandler.Instance().KeysDownUpdate += OnKeysDownUpdate;
         }
 
-        public virtual void OnKeyStateChanged(object sender, EventArgs eventArgs)
+        //When KeyboardState changes, this method is called via the KeyStateChanged event. This event does three things:
+        //1. checks if any of the keys associated with the command names in the list of the InputController type (T at instantiation) have been pressed and calls execute from associated commands.
+        //2. checks if any of the keys are have been held down since last update and calls execute from commands.
+        //3. checks if any of those keys have been released and calls terminate from associated commands.
+        public void OnKeyStateChanged(object sender, EventArgs eventArgs)
         {
+            for (var i = 0; i < ObjectType.Actions.Count(); i++)
+            {
+                if (InputHandler.Instance().WasPressed(ObjectType.Actions[i]))
+                    gameObject.Execute(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
+            }
+            for (var i = 0; i < ObjectType.Actions.Count(); i++)
+            {
+                if (InputHandler.Instance().IsDown(ObjectType.Actions[i]))
+                    gameObject.Execute(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
+            }
+            for (var i = 0; i < ObjectType.Actions.Count(); i++)
+            {
+                if (InputHandler.Instance().IsReleased(ObjectType.Actions[i]))
+                    gameObject.Termiante(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
+            }
         }
 
-        //public virtual void OnKeyPressed(object sender, InputEventArgs inputEventArgs)
-        //{
-        //}
+        //This method is only called when any keys are down and KeyboardState has not changed. These two methods reduce unnecessary update calls when nothing has changed.
+        public void OnKeysDownUpdate(object sender, EventArgs args)
+        {
 
+            for (var i = 0; i < ObjectType.Actions.Count(); i++)
+            {
+                if (InputHandler.Instance().IsDown(ObjectType.Actions[i]))
+                    gameObject.Execute(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
+            }
+        }
 
-        //public virtual void OnKeyPressed(object sender, EventArgs eventArgs)
-        //{
-
-        //}
-
-        //public virtual void OnKeyDown(object sender, EventArgs eventArgs)
-        //{
-        //}
-
-        //public virtual void OnKeyReleased(object sender, EventArgs eventArgs)
-        //{
-        //}
     }
 }

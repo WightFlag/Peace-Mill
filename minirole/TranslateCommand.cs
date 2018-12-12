@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Peace_Mill
 {
-    class TranslateCommand : ICommand
+    class TranslateCommand : Command
     {
         private Vector2 _movement;
 
@@ -17,6 +17,11 @@ namespace Peace_Mill
         public override void Execute(GameObject gameObject)
         {
             gameObject.Position += _movement;
+        }
+
+        public override void Terminate(GameObject gameObject)
+        {
+            throw new NotImplementedException();
         }
     }
 }

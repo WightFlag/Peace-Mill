@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class Move_Command : ICommand
+    public class Move_Command : Command
     {
         private Vector2 _acceleration;
 
@@ -25,6 +25,11 @@ namespace Peace_Mill
         {
             gameObject.Execute(new TranslateCommand(_acceleration));
             gameObject.Velocity = _acceleration;
+        }
+
+        public override void Terminate(GameObject gameObject)
+        {
+            gameObject.Velocity = Vector2.Zero;
         }
     }
 }

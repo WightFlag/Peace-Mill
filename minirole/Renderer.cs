@@ -14,12 +14,17 @@ namespace Peace_Mill
     {
         private Image _image;
         private GraphicsDevice _graphicsDevice;
+        private GraphicsDeviceManager _graphicsDeviceManager;
+
+        private Vector2 _originCenter;
 
         public Renderer(GameObject gameObject)
         {
             _graphicsDevice = ComponentManager.Instance.graphicsDevice;
+            _graphicsDeviceManager = ComponentManager.Instance.graphicsDeviceManager;
             this.gameObject = gameObject;
             _image = gameObject.GetComponent<Image>();
+            _originCenter = Vector2.Zero;
         }
 
         public Texture2D DrawFrame(Rectangle sourceRect, Image image)
@@ -37,7 +42,7 @@ namespace Peace_Mill
         {
             spriteBatch.Draw(
                 texture,
-                gameObject.Position + localOffset,
+                CenterOrigin() + localOffset,
                 gameObject.SourceRect,
                 _image.Tint * _image.Alpha,
                 gameObject.Rotation,
@@ -45,6 +50,16 @@ namespace Peace_Mill
                 gameObject.Scale,
                 SpriteEffects.None,
                 0.0f);
+        }
+
+        public Vector2 CenterOrigin()
+        {
+            //_originCenter.X = gameObject.Position.X * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width/2 + GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width/2;
+            //_originCenter.Y = gameObject.Position.Y * GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height/2 + GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height/2;
+            _originCenter.X = gameObject.Position.X + _graphicsDeviceManager.PreferredBackBufferWidth / 2;
+            _originCenter.Y = gameObject.Position.Y + _graphicsDeviceManager.PreferredBackBufferHeight / 2;
+
+            return _originCenter;
         }
     }
 }

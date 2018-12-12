@@ -17,6 +17,7 @@ namespace Peace_Mill
         Image screenImage;
         GameObject Screen;
         Animator animator;
+        GameObject Player;
 
         public Game1()
         {
@@ -49,6 +50,7 @@ namespace Peace_Mill
             //**************************************************************************************************************************************************************************
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            ComponentManager.Instance.graphicsDeviceManager = graphics;
             ComponentManager.Instance.graphicsDevice = GraphicsDevice;
             ComponentManager.Instance.Content = Content;
 
@@ -56,12 +58,16 @@ namespace Peace_Mill
             Screen = new GameObject();
             screenImage = Screen.AddCompnent<Image>();
             animator = Screen.AddCompnent<Animator>();
-            Screen.AddCompnent<ScreenInputController>();
+            Screen.AddCompnent<InputController<ScreenInputController>>();
 
             animator.Initialize(1920, 1080, Vector2.Zero);
 
             animator.gameObject.LoadContent();
             animator.gameObject.Scale = .10f;
+            //Player = new GameObject();
+
+
+
             //animator.gameObject.Transform.Translate(new Vector2(240, 240));
 
 

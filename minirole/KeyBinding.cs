@@ -12,17 +12,17 @@ namespace Peace_Mill
 {
     public class KeyBinding
     {
-        private ICommand _command;
+        private Command _command;
         private Keys[] _key;
 
-        public ICommand Command { get => _command; set => _command = value; }
+        public Command Command { get => _command; set => _command = value; }
         public Keys[] Key { get => _key; set => _key = value; }
 
         public KeyBinding()
         {
         }  
 
-        public KeyBinding(ICommand command, params Keys[] key)
+        public KeyBinding(Command command, params Keys[] key)
         {
             _key = key;
             _command = command;

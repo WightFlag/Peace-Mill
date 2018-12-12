@@ -13,8 +13,8 @@ namespace Peace_Mill
         [XmlElement("Component")]
         public List<Component> Renderables;
 
-        private Rectangle _dimensions;
-        private Vector2 _position;
+        //private Rectangle _dimensions;
+        //private Vector2 _position;
         private float _rotation;
         private float _scale;
         private Vector2 _velocity;
@@ -24,8 +24,10 @@ namespace Peace_Mill
         private Rectangle _sourceRect;
         private Dictionary<Type,object> _components;
 
-        public Rectangle Dimensions { get => _dimensions; set => _dimensions = value; }
-        public Vector2 Position { get => _position; set => _position = value; }
+        public Rectangle Dimensions;
+        //public Rectangle Dimensions { get => _dimensions; set => _dimensions = value; }
+        public Vector2 Position;
+        //public Vector2 Position { get => _position; set => _position = value; }
         public float Rotation { get => _rotation; set => _rotation = value; }
         public float Scale { get => _scale; set => _scale = value; }
         public Vector2 Velocity { get => _velocity; set => _velocity = value; }
@@ -55,15 +57,21 @@ namespace Peace_Mill
             Scale = 1.0f;
             Velocity = Vector2.Zero;
             IsActive = false;
+            
    
             Transform = new Transform(this);          
         }
 
         #endregion Constructors
 
-        public void Execute(ICommand command)
+        public void Execute(Command command)
         {
             command.Execute(this);
+        }
+
+        public void Termiante(Command command)
+        {
+            command.Terminate(this);
         }
 
         public bool HasComponent<T>()
