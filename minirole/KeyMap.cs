@@ -27,15 +27,14 @@ namespace Peace_Mill
                 {
                     _instance = new KeyMap()
                     {
-
                         Bindings = new List<KeyBinding>()
                         {
                             new KeyBinding(new Move_Command("Move_Down_Command", new Vector2(0,1)),Keys.Down),
                             new KeyBinding(new Move_Command("Move_Up_Command", new Vector2(0,-1)), Keys.Up),
                             new KeyBinding(new Move_Command("Move_Right_Command", new Vector2(1,0)), Keys.LeftControl,Keys.Right),
                             new KeyBinding(new Move_Command("Move_Left_Command", new Vector2(-1,0)), Keys.LeftControl,Keys.Left),
-                            new KeyBinding(new Turn_Command("Turn_Right_Command", -1f), Keys.Right),
-                            new KeyBinding(new Turn_Command("Turn_Left_Command", 1f), Keys.Left)
+                            new KeyBinding(new Turn_Command("Turn_Right_Command", 1f), Keys.Right),
+                            new KeyBinding(new Turn_Command("Turn_Left_Command", -1f), Keys.Left)
                         }
                     };
                     var bindingLoader = new ContentLoader<List<KeyBinding>>();

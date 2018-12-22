@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Image xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Image</Name>
+  <Path>bclog</Path>
+  <Tint>
+    <B>255</B>
+    <G>255</G>
+    <R>255</R>
+    <A>255</A>
+    <PackedValue>4294967295</PackedValue>
+  </Tint>
+  <Alpha>1</Alpha>
+  <Origin>
+    <X>1920</X>
+    <Y>1080</Y>
+  </Origin>
+</Image>

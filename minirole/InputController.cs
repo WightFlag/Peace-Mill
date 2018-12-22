@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Peace_Mill
 {
+    [XmlInclude(typeof(ScreenInputController))]
+    [XmlInclude(typeof(Component))]
+    [XmlInclude(typeof(Controller))]
     public class InputController <T> :Component where T:Controller
     {
         public T ObjectType;
@@ -23,10 +27,25 @@ namespace Peace_Mill
             InputHandler.Instance().KeysDownUpdate += OnKeysDownUpdate;
         }
 
+        public InputController()
+        {
+            var type = typeof(T);
+            var constructors = type.GetConstructors();
+            ObjectType = (T)constructors[0].Invoke(new object[] { gameObject });
+
+            this.Name = "InputController";
+
+            InputHandler.Instance().KeyStateChanged += OnKeyStateChanged;
+            InputHandler.Instance().KeysDownUpdate += OnKeysDownUpdate;
+        }
+
+
         //When KeyboardState changes, this method is called via the KeyStateChanged event. This event does three things:
         //1. checks if any of the keys associated with the command names in the list of the InputController type (T at instantiation) have been pressed and calls execute from associated commands.
         //2. checks if any of the keys are have been held down since last update and calls execute from commands.
         //3. checks if any of those keys have been released and calls terminate from associated commands.
+        //This also results in slightly turning before strafing if a directional key is bound to turn and a modifier + directional is bound to strafe. The remedy for that situation is to eliminate the 
+        //first "WasPressed" check.
         public void OnKeyStateChanged(object sender, EventArgs eventArgs)
         {
             for (var i = 0; i < ObjectType.Actions.Count(); i++)

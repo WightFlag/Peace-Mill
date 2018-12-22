@@ -23,8 +23,8 @@ namespace Peace_Mill
 
         public override void Execute(GameObject gameObject)
         {
-            gameObject.Execute(new TranslateCommand(_acceleration));
             gameObject.Velocity = _acceleration;
+            gameObject.Execute(new TranslateCommand(_acceleration));
         }
 
         public override void Terminate(GameObject gameObject)

@@ -18,6 +18,7 @@ namespace Peace_Mill
         GameObject Screen;
         Animator animator;
         GameObject Player;
+        GameObject thisObject;
 
         public Game1()
         {
@@ -54,16 +55,45 @@ namespace Peace_Mill
             ComponentManager.Instance.graphicsDevice = GraphicsDevice;
             ComponentManager.Instance.Content = Content;
 
+            var gameObjectLoader = new ContentLoader<GameObject>();
+            //var thisObject = new GameObject();
+            //thisObject.AddCompnent<Image>();
+            //thisObject.AddCompnent<Animator>();
+            //thisObject.AddCompnent<Collider>();
 
-            Screen = new GameObject();
-            screenImage = Screen.AddCompnent<Image>();
-            animator = Screen.AddCompnent<Animator>();
-            Screen.AddCompnent<InputController<ScreenInputController>>();
+            thisObject = new GameObject();
+            thisObject.AddCompnent<Animator>();
 
-            animator.Initialize(1920, 1080, Vector2.Zero);
 
-            animator.gameObject.LoadContent();
-            animator.gameObject.Scale = .10f;
+            //thisObject = gameObjectLoader.Load("Load/gameObjectTemplate.xml");
+            thisObject.Initialize();
+            thisObject.GetComponent<Animator>().Initialize();
+
+
+            thisObject.AddCompnent <InputController<ScreenInputController>>();
+
+            gameObjectLoader.Save("Load/gameObjectTemplate.xml", thisObject);
+
+            thisObject.LoadContent();
+            thisObject.Scale = (float)graphics.PreferredBackBufferWidth/thisObject.SourceRect.Width;
+
+
+            //var imageLoader = new ContentLoader<Image>();
+            //imageLoader.Save("Load/image.xml", thisObject.GetComponent<Image>());
+
+            //var animatorLoader = new ContentLoader<Animator>();
+            //animatorLoader.Save("Load/animator.xml",thisObject.GetComponent<Animator>());
+
+            //Screen = new GameObject();
+            //screenImage = Screen.AddCompnent<Image>();
+            //animator = Screen.AddCompnent<Animator>();
+            //Screen.AddCompnent<InputController<ScreenInputController>>();
+
+            //animator.Initialize();
+            //animator.Initialize(1920, 1080, Vector2.Zero);
+
+            //animator.gameObject.LoadContent();
+            //animator.gameObject.Scale = .20f;
             //Player = new GameObject();
 
 
@@ -101,7 +131,8 @@ namespace Peace_Mill
 
             //**************************************************************************************************************************************************************************
 
-            animator.gameObject.Update(gameTime);
+            //animator.gameObject.Update(gameTime);
+            thisObject.Update(gameTime);
 
             //**************************************************************************************************************************************************************************
 
@@ -120,7 +151,8 @@ namespace Peace_Mill
 
             spriteBatch.Begin();
 
-            animator.gameObject.Draw(spriteBatch);
+            //animator.gameObject.Draw(spriteBatch);
+            thisObject.Draw(spriteBatch);
 
 
             spriteBatch.End();

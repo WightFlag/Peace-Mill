@@ -4,6 +4,10 @@ using Microsoft.Xna.Framework;
 
 namespace Peace_Mill
 {
+    [XmlInclude(typeof(Animator))]
+    //[XmlInclude(typeof(Collider))]
+    [XmlInclude(typeof(Image))]
+    [XmlInclude(typeof(InputController<ScreenInputController>))]
     public abstract class Component
     {
         private string _name;

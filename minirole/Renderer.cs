@@ -15,7 +15,6 @@ namespace Peace_Mill
         private Image _image;
         private GraphicsDevice _graphicsDevice;
         private GraphicsDeviceManager _graphicsDeviceManager;
-
         private Vector2 _originCenter;
 
         public Renderer(GameObject gameObject)
@@ -24,6 +23,13 @@ namespace Peace_Mill
             _graphicsDeviceManager = ComponentManager.Instance.graphicsDeviceManager;
             this.gameObject = gameObject;
             _image = gameObject.GetComponent<Image>();
+            _originCenter = Vector2.Zero;
+        }
+
+        public Renderer()
+        {
+            _graphicsDevice = ComponentManager.Instance.graphicsDevice;
+            _graphicsDeviceManager = ComponentManager.Instance.graphicsDeviceManager;
             _originCenter = Vector2.Zero;
         }
 
@@ -38,15 +44,15 @@ namespace Peace_Mill
             return RenderTarget;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 localOffset)
+        public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 origin)
         {
             spriteBatch.Draw(
                 texture,
-                CenterOrigin() + localOffset,
+                CenterOrigin(),
                 gameObject.SourceRect,
                 _image.Tint * _image.Alpha,
                 gameObject.Rotation,
-                Vector2.Zero,
+                origin,
                 gameObject.Scale,
                 SpriteEffects.None,
                 0.0f);

@@ -22,6 +22,8 @@ namespace Peace_Mill
 
         private bool _isActive;
         private Rectangle _sourceRect;
+        private List<string> _componentTypes;
+        private List<Component> _componentList;
         private Dictionary<Type,object> _components;
 
         public Rectangle Dimensions;
@@ -35,6 +37,9 @@ namespace Peace_Mill
 
         public bool IsActive { get => _isActive; set => _isActive = value; }
         public Rectangle SourceRect { get => _sourceRect; set => _sourceRect = value; }
+        public List<string> ComponentTypes { get => _componentTypes; set => _componentTypes = value; }
+        public List<Component> ComponentList { get => _componentList; set => _componentList = value; }
+        [XmlIgnore]
         public Dictionary<Type, object> Components { get => _components; set => _components = value; }
 
                
@@ -48,7 +53,10 @@ namespace Peace_Mill
         private void InitializePreDefinedComponents()
         {
             _components = new Dictionary<Type, object>();
-            Components = new Dictionary<Type, object>();
+            //Components = new Dictionary<Type, object>();
+            _componentTypes = new List<string>();
+            _componentList = new List<Component>();
+
             Renderables = new List<Component>();
 
             Dimensions = Rectangle.Empty;
@@ -56,11 +64,12 @@ namespace Peace_Mill
             Rotation = 0.0f;
             Scale = 1.0f;
             Velocity = Vector2.Zero;
-            IsActive = false;
-            
+            IsActive = false;            
    
-            Transform = new Transform(this);          
+            Transform = new Transform(this);
         }
+
+       
 
         #endregion Constructors
 
@@ -91,7 +100,22 @@ namespace Peace_Mill
             T component = (T)ComponentManager.Instance.Instantiate(type, this);
             component.gameObject = this;
             _components.Add(type, component);
+            //_componentTypes.Add(type.ToString().Substring(type.ToString().IndexOf(".")+1));
+            _componentList.Add(component);
+
             return (T)component;
+        }
+
+        public void Initialize()
+        {
+            for (var i = 0; i < ComponentTypes.Count; i++)
+            {
+                Type T = ComponentManager.Instance.GetComponentType(ComponentTypes[i]);
+                Component component = (Component)ComponentManager.Instance.Instantiate(T, this);
+                //implement way of loading components here
+                component.gameObject = this;
+                _components.Add(T, component);
+            }
         }
 
         public void LoadContent()

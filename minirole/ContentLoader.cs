@@ -29,12 +29,15 @@ namespace Peace_Mill
             return ObjectToLoad;
         }
 
-        public void Save (string path, object obj)
+        public void Save (string path, T obj)
         {
-            using (var sw = new StreamWriter(path))
+            using (var fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
             {
-                var xml = new XmlSerializer(ObjectType);
-                xml.Serialize(sw, obj);
+                using (var sw = new StreamWriter(fs))
+                {
+                    var xml = new XmlSerializer(ObjectType);
+                    xml.Serialize(sw, obj);
+                }
             }
         }
     }

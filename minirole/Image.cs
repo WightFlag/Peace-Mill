@@ -20,7 +20,6 @@ namespace Peace_Mill
         public string Path;
         [XmlIgnore]
         public Texture2D Texture;
-        [XmlIgnore]
         //public Texture2D RenderTarget;
 
         //private Animator _animator;
@@ -41,6 +40,17 @@ namespace Peace_Mill
             Tint = Color.White;
             Alpha = 1.0f;
             this.gameObject = gameObject;
+
+            Path = "bclog";
+        }
+
+        public Image() : base()
+        {
+            Name = "Image";
+            graphicsDevice = ComponentManager.Instance.graphicsDevice;
+            Path = String.Empty;
+            Tint = Color.White;
+            Alpha = 1.0f;
 
             Path = "bclog";
         }

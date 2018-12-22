@@ -17,6 +17,7 @@ namespace Peace_Mill
         public override void Execute(GameObject gameObject)
         {
             gameObject.Position += _movement;
+            Console.WriteLine($"Game Object Position.X: {gameObject.Position.X}");
         }
 
         public override void Terminate(GameObject gameObject)

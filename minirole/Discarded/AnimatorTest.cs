@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class Animator : Component, IRenderable
+    public class AnimatorTest : Component, IRenderable
     {
         //private T animationType;
         private List<List<Texture2D>> _frames;
@@ -20,45 +20,28 @@ namespace Peace_Mill
         private Vector2 _frameSet;
         private Vector2 _currentFrameIndex;
         private Renderer _renderer;
-        //private Vector2 _localOffset;
-        private Vector2 _frameOrigin;
-        [XmlIgnore]
+        private Vector2 _localOffset;
+
         public List<List<Texture2D>> Frames { get => _frames; private set => _frames = value; }
+        public Image Spritesheet { get => _spriteSheet; }
+        public Vector2 FrameSize { get => _frameSize; }
+        public Vector2 FrameSet { get => _frameSet; }
+        public Vector2 CurrentFrameIndex { get => _currentFrameIndex; }
+        public Vector2 LocalOffset { get => _localOffset; }
 
-        public Image Spritesheet { get => _spriteSheet; set => _spriteSheet = value; }
-        public Vector2 FrameSize { get => _frameSize; set => _frameSize = value; }
-        public Vector2 FrameSet { get => _frameSet; set => _frameSet = value; }
-        public Vector2 CurrentFrameIndex { get => _currentFrameIndex; set => _currentFrameIndex = value; }
-        public Renderer Renderer { get => _renderer; set => _renderer = value; }
-        //public Vector2 LocalOffset { get => _localOffset; }
-        public Vector2 FrameOrigin { get => _frameOrigin; }
-
-        public Animator (GameObject gameObject)
+        public AnimatorTest(GameObject gameObject)
         {
-
+            this.Name = "Animator";
             this.gameObject = gameObject;
-            this.Name = nameof(this.gameObject) + "Animator";
 
             //var type = typeof(T);
             //var constructor = type.GetConstructors();
             //animationType = (T)constructor[0].Invoke(new object[] { gameObject});
         }
-        public Animator()
+        public AnimatorTest()
         {
             this.Name = "Animator";
             this.gameObject = gameObject;
-        }
-
-        public void Initialize()
-        {
-            _frames = new List<List<Texture2D>>();
-            _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
-            _spriteSheet.LoadContent();
-
-            _frameSize = new Vector2(_spriteSheet.Texture.Width,_spriteSheet.Texture.Height);
-            _frameSet = Vector2.Zero;
-            _currentFrameIndex = Vector2.Zero;
-            _frameOrigin = new Vector2(_spriteSheet.Texture.Width/2, _spriteSheet.Texture.Height/2);
         }
 
         public void Initialize(int tileWidth, int tileHeight, Vector2 initialFrameIndex)
@@ -71,12 +54,16 @@ namespace Peace_Mill
             _frameSize = new Vector2(tileWidth, tileHeight);
             _frameSet = Vector2.Zero;
             _currentFrameIndex = initialFrameIndex;
-            _frameOrigin = new Vector2(tileWidth / 2, tileHeight / 2);
+            _currentFrameIndex = new Vector2(0, 0);
         }
 
         public void AdvanceFrame()
         {
             _currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
+            if (_currentFrameIndex.X == _frameSet.X)
+            {
+                _currentFrameIndex.Y = _currentFrameIndex.Y < _frameSet.Y ? _currentFrameIndex.Y + 1 : 0;
+            }
         }
 
         public void SetFrameSequence(float row)
@@ -97,8 +84,8 @@ namespace Peace_Mill
                 _frames.Add(new List<Texture2D>());
                 for (_currentFrameIndex.Y = 0; _currentFrameIndex.Y <= _frameSet.Y; _currentFrameIndex.Y++)
                 {
-                    var image = _renderer.DrawFrame(new Rectangle((int)(_currentFrameIndex.X * _frameSize.X), (int)(_currentFrameIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), _spriteSheet);
-                    
+                    var image = _renderer.DrawFrame(new Rectangle((int)(_currentFrameIndex.X * _frameSize.X), (int)(_currentFrameIndex.Y * _frameSize.Y), (int)_frameSize.X, (int)_frameSize.Y), _spriteSheet);
+
                     _frames[(int)_currentFrameIndex.X].Add(image);
                 }
             }
@@ -108,13 +95,13 @@ namespace Peace_Mill
 
         public override void Update(GameTime gameTime)
         {
-           AdvanceFrame();
-           //_localOffset = new Vector2((_currentFrameIndex.X * _frameSize.X - (_frameSize.X * (_frameSet.X + 1)/2)) * gameObject.Scale , (_currentFrameIndex.Y * _frameSize.Y - (_frameSize.Y * (_frameSet.Y+1)/2)) * gameObject.Scale); 
+            AdvanceFrame();
+            _localOffset = new Vector2((_currentFrameIndex.X * _frameSize.X - (_frameSize.X * (_frameSet.X + 1) / 2)) * gameObject.Scale, (_currentFrameIndex.Y * _frameSize.Y - (_frameSize.Y * (_frameSet.Y + 1) / 2)) * gameObject.Scale);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _frameOrigin);
+            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _localOffset);
         }
     }
 }

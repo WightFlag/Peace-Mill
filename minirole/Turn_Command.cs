@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.Xna.Framework;
+
 namespace Peace_Mill
 {
     public class Turn_Command : Command
@@ -18,11 +20,13 @@ namespace Peace_Mill
 
         public override void Execute(GameObject gameObject)
         {
-            gameObject.Execute(new RotateCommand(_spin));
+            if(gameObject.Velocity.X == 0)
+                gameObject.Execute(new RotateCommand(_spin));
         }
 
         public override void Terminate(GameObject gameObject)
         {
+            gameObject.Velocity = Vector2.Zero;
         }
     }
 }

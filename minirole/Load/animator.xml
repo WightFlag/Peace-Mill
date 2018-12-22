@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animator xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Animator</Name>
+  <Spritesheet>
+    <Name>Image</Name>
+    <Path>female01</Path>
+    <Tint>
+      <B>255</B>
+      <G>255</G>
+      <R>255</R>
+      <A>255</A>
+      <PackedValue>4294967295</PackedValue>
+    </Tint>
+    <Alpha>1</Alpha>
+    <Origin>
+      <X>1920</X>
+      <Y>1080</Y>
+    </Origin>
+  </Spritesheet>
+  <FrameSize>
+    <X>3840</X>
+    <Y>2160</Y>
+  </FrameSize>
+  <FrameSet>
+    <X>0</X>
+    <Y>0</Y>
+  </FrameSet>
+  <CurrentFrameIndex>
+    <X>0</X>
+    <Y>0</Y>
+  </CurrentFrameIndex>
+  <Renderer />
+</Animator>
