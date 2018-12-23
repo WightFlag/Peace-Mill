@@ -46,7 +46,8 @@ namespace Peace_Mill
         public Animator()
         {
             this.Name = "Animator";
-            this.gameObject = gameObject;
+            Frames = new List<List<Texture2D>>();
+ 
         }
 
         public void Initialize()
@@ -87,33 +88,36 @@ namespace Peace_Mill
         public override void LoadContent()
         {//establishes the frameset and sourceRect for render once the image has been loaded
 
-            var texture = gameObject.GetComponent<Image>().Texture;
-            _frameSet = new Vector2(_spriteSheet.Texture.Width / _frameSize.X - 1, Spritesheet.Texture.Height / _frameSize.Y - 1);
-            gameObject.SourceRect = new Rectangle((int)(_currentFrameIndex.X * FrameSize.X), (int)(_currentFrameIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
+            var tempIndex = Vector2.Zero;
+
+            _spriteSheet.gameObject = this.gameObject;
+            _spriteSheet.LoadContent();
+
+            gameObject.SourceRect = new Rectangle((int)(tempIndex.X * FrameSize.X), (int)(tempIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
 
             _renderer = new Renderer(gameObject);
-            for (_currentFrameIndex.X = 0; _currentFrameIndex.X <= _frameSet.X; _currentFrameIndex.X++)
+            for (tempIndex.X = 0; tempIndex.X <= _frameSet.X; tempIndex.X++)
             {
                 _frames.Add(new List<Texture2D>());
-                for (_currentFrameIndex.Y = 0; _currentFrameIndex.Y <= _frameSet.Y; _currentFrameIndex.Y++)
+                for (tempIndex.Y = 0; tempIndex.Y <= _frameSet.Y; tempIndex.Y++)
                 {
-                    var image = _renderer.DrawFrame(new Rectangle((int)(_currentFrameIndex.X * _frameSize.X), (int)(_currentFrameIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), _spriteSheet);
+                    var image = _renderer.DrawFrame(new Rectangle((int)(tempIndex.X * _frameSize.X), (int)(tempIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), _spriteSheet);
                     
-                    _frames[(int)_currentFrameIndex.X].Add(image);
+                    _frames[(int)tempIndex.X].Add(image);
                 }
             }
-            _currentFrameIndex.X = 0;
-            _currentFrameIndex.Y = 0;
+            _frameOrigin = new Vector2(FrameSize.X/2, FrameSize.Y/2);
         }
 
         public override void Update(GameTime gameTime)
         {
-           AdvanceFrame();
+           //AdvanceFrame();
            //_localOffset = new Vector2((_currentFrameIndex.X * _frameSize.X - (_frameSize.X * (_frameSet.X + 1)/2)) * gameObject.Scale , (_currentFrameIndex.Y * _frameSize.Y - (_frameSize.Y * (_frameSet.Y+1)/2)) * gameObject.Scale); 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            //spriteBatch.Draw(_spriteSheet.Texture, gameObject.Position + _frameOrigin, gameObject.SourceRect, Color.White * _spriteSheet.Alpha, 0.0f, _frameOrigin, new Vector2(gameObject.Scale, gameObject.Scale), SpriteEffects.None, 0.0f);
             _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _frameOrigin);
         }
     }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dimensions>
     <X>0</X>
@@ -15,7 +15,7 @@
     </Size>
   </Dimensions>
   <Position>
-    <X>0</X>
+    <X>-0</X>
     <Y>0</Y>
   </Position>
   <Rotation>0</Rotation>
@@ -31,57 +31,22 @@
   <SourceRect>
     <X>0</X>
     <Y>0</Y>
-    <Width>3840</Width>
-    <Height>2160</Height>
+    <Width>48</Width>
+    <Height>48</Height>
     <Location>
       <X>0</X>
       <Y>0</Y>
     </Location>
     <Size>
-      <X>3840</X>
-      <Y>2160</Y>
+      <X>48</X>
+      <Y>48</Y>
     </Size>
   </SourceRect>
   <ComponentTypes />
   <ComponentList>
-    <Component xsi:type="Animator">
-      <Name>gameObjectAnimator</Name>
-      <Spritesheet>
-        <Name>Image</Name>
-        <Path>bclog</Path>
-        <Tint>
-          <B>255</B>
-          <G>255</G>
-          <R>255</R>
-          <A>255</A>
-          <PackedValue>4294967295</PackedValue>
-        </Tint>
-        <Alpha>1</Alpha>
-        <Origin>
-          <X>1920</X>
-          <Y>1080</Y>
-        </Origin>
-      </Spritesheet>
-      <FrameSize>
-        <X>3840</X>
-        <Y>2160</Y>
-      </FrameSize>
-      <FrameSet>
-        <X>0</X>
-        <Y>0</Y>
-      </FrameSet>
-      <CurrentFrameIndex>
-        <X>0</X>
-        <Y>0</Y>
-      </CurrentFrameIndex>
-      <FrameOrigin>
-        <X>1920</X>
-        <Y>1080</Y>
-      </FrameOrigin>
-    </Component>
     <Component xsi:type="Image">
       <Name>Image</Name>
-      <Path>bclog</Path>
+      <Path>Art/female_01</Path>
       <Tint>
         <B>255</B>
         <G>255</G>
@@ -91,10 +56,42 @@
       </Tint>
       <Alpha>1</Alpha>
       <Origin>
-        <X>1920</X>
-        <Y>1080</Y>
+        <X>24</X>
+        <Y>24</Y>
       </Origin>
     </Component>
+    <Component xsi:type="Animator">
+      <Name>gameObjectAnimator</Name>
+      <Spritesheet>
+        <Name>Image</Name>
+        <Path>Art/female_01</Path>
+        <Tint>
+          <B>255</B>
+          <G>255</G>
+          <R>255</R>
+          <A>255</A>
+          <PackedValue>4294967295</PackedValue>
+        </Tint>
+        <Alpha>1</Alpha>
+        <Origin>
+          <X>24</X>
+          <Y>24</Y>
+        </Origin>
+      </Spritesheet>
+      <FrameSize>
+        <X>48</X>
+        <Y>48</Y>
+      </FrameSize>
+      <FrameSet>
+        <X>2</X>
+        <Y>3</Y>
+      </FrameSet>
+      <CurrentFrameIndex>
+        <X>1</X>
+        <Y>0</Y>
+      </CurrentFrameIndex>
+    </Component>
+
     <Component xsi:type="InputControllerOfScreenInputController">
       <Name>InputController</Name>
       <ObjectType>

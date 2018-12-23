@@ -38,7 +38,7 @@ namespace Peace_Mill
 
             var RenderTarget = new Texture2D(_graphicsDevice, sourceRect.Width, sourceRect.Height);
             Color[] pixelarray = new Color[sourceRect.Width * sourceRect.Height];
-            image.Texture.GetData(0, sourceRect, pixelarray, 0, pixelarray.Length);
+            image.Texture.GetData(0, sourceRect, pixelarray, 0, pixelarray.Length);          
             RenderTarget.SetData(pixelarray);
 
             return RenderTarget;

@@ -41,7 +41,7 @@ namespace Peace_Mill
             Alpha = 1.0f;
             this.gameObject = gameObject;
 
-            Path = "bclog";
+            //Path = "bclog";
         }
 
         public Image() : base()
@@ -52,7 +52,7 @@ namespace Peace_Mill
             Tint = Color.White;
             Alpha = 1.0f;
 
-            Path = "bclog";
+           //Path = "bclog";
         }
 
         public override void LoadContent()

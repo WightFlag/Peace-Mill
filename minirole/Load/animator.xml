@@ -3,7 +3,7 @@
   <Name>Animator</Name>
   <Spritesheet>
     <Name>Image</Name>
-    <Path>female01</Path>
+    <Path>bclog</Path>
     <Tint>
       <B>255</B>
       <G>255</G>

@@ -61,22 +61,22 @@ namespace Peace_Mill
             //thisObject.AddCompnent<Animator>();
             //thisObject.AddCompnent<Collider>();
 
-            thisObject = new GameObject();
-            thisObject.AddCompnent<Animator>();
+            //thisObject = new GameObject();
+            //thisObject.AddCompnent<Animator>();
 
 
-            //thisObject = gameObjectLoader.Load("Load/gameObjectTemplate.xml");
+            thisObject = gameObjectLoader.Load("Load/gameObjectTemplate01.xml");
             thisObject.Initialize();
-            thisObject.GetComponent<Animator>().Initialize();
+            //thisObject.GetComponent<Animator>().Initialize();
 
 
-            thisObject.AddCompnent <InputController<ScreenInputController>>();
+            //thisObject.AddCompnent <InputController<ScreenInputController>>();
 
-            gameObjectLoader.Save("Load/gameObjectTemplate.xml", thisObject);
+            //gameObjectLoader.Save("Load/gameObjectTemplate.xml", thisObject);
 
             thisObject.LoadContent();
-            thisObject.Scale = (float)graphics.PreferredBackBufferWidth/thisObject.SourceRect.Width;
-
+            //thisObject.Scale = (float)graphics.PreferredBackBufferWidth/thisObject.SourceRect.Width;
+            //thisObject.SourceRect = new Rectangle(0, 0, 48, 48);
 
             //var imageLoader = new ContentLoader<Image>();
             //imageLoader.Save("Load/image.xml", thisObject.GetComponent<Image>());

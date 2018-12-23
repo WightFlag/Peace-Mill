@@ -47,7 +47,23 @@ namespace Peace_Mill
 
         public GameObject()
         {
-            InitializePreDefinedComponents();
+            _components = new Dictionary<Type, object>();
+            //Components = new Dictionary<Type, object>();
+            _componentTypes = new List<string>();
+            _componentList = new List<Component>();
+
+            Renderables = new List<Component>();
+
+            Dimensions = Rectangle.Empty;
+            Position = Vector2.Zero;
+            Rotation = 0.0f;
+            Scale = 1.0f;
+            Velocity = Vector2.Zero;
+            IsActive = false;
+
+            Transform = new Transform(this);
+
+            //InitializePreDefinedComponents();
         }
 
         private void InitializePreDefinedComponents()
@@ -55,7 +71,7 @@ namespace Peace_Mill
             _components = new Dictionary<Type, object>();
             //Components = new Dictionary<Type, object>();
             _componentTypes = new List<string>();
-            _componentList = new List<Component>();
+            //_componentList = new List<Component>();
 
             Renderables = new List<Component>();
 
@@ -106,15 +122,24 @@ namespace Peace_Mill
             return (T)component;
         }
 
+        //public void Initialize()
+        //{
+        //    for (var i = 0; i < ComponentTypes.Count; i++)
+        //    {
+        //        Type T = ComponentManager.Instance.GetComponentType(ComponentTypes[i]);
+        //        Component component = (Component)ComponentManager.Instance.Instantiate(T, this);
+        //        //implement way of loading components here
+        //        component.gameObject = this;
+        //        _components.Add(T, component);
+        //    }
+        //}
+
         public void Initialize()
         {
-            for (var i = 0; i < ComponentTypes.Count; i++)
+            for (var i = 0; i < _componentList.Count; i++)
             {
-                Type T = ComponentManager.Instance.GetComponentType(ComponentTypes[i]);
-                Component component = (Component)ComponentManager.Instance.Instantiate(T, this);
-                //implement way of loading components here
-                component.gameObject = this;
-                _components.Add(T, component);
+                _componentList[i].gameObject = this;               
+                _components.Add(_componentList[i].GetType(), _componentList[i]);
             }
         }
 
