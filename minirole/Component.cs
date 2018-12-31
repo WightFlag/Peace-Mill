@@ -21,6 +21,7 @@ namespace Peace_Mill
         public int ID { get => _id; private set => _id = value; }
         [XmlIgnore]
         public GameObject gameObject { get => _gameObject; set => _gameObject = value; }
+        public bool IsActive;
 
 
         public Component ()

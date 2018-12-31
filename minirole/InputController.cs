@@ -50,6 +50,11 @@ namespace Peace_Mill
         {
             for (var i = 0; i < ObjectType.Actions.Count(); i++)
             {
+                if (InputHandler.Instance().IsReleased(ObjectType.Actions[i]))
+                    gameObject.Termiante(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
+            }
+            for (var i = 0; i < ObjectType.Actions.Count(); i++)
+            {
                 if (InputHandler.Instance().WasPressed(ObjectType.Actions[i]))
                     gameObject.Execute(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
             }
@@ -57,11 +62,6 @@ namespace Peace_Mill
             {
                 if (InputHandler.Instance().IsDown(ObjectType.Actions[i]))
                     gameObject.Execute(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
-            }
-            for (var i = 0; i < ObjectType.Actions.Count(); i++)
-            {
-                if (InputHandler.Instance().IsReleased(ObjectType.Actions[i]))
-                    gameObject.Termiante(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Peace_Mill
             for (var i = 0; i < ObjectType.Actions.Count(); i++)
             {
                 if (InputHandler.Instance().IsDown(ObjectType.Actions[i]))
-                    gameObject.Execute(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
+                    gameObject.Continue(KeyMap.Instance.GetKeyBinding(ObjectType.Actions[i]).Command);
             }
         }
 

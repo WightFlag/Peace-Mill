@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKeyBinding xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Down_Command</Name>
+      <Acceleration>
+        <X>0</X>
+        <Y>1</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>Down</Keys>
+    </Key>
+  </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Up_Command</Name>
+      <Acceleration>
+        <X>0</X>
+        <Y>-1</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>Up</Keys>
+    </Key>
+  </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Right_Command</Name>
+      <Acceleration>
+        <X>1</X>
+        <Y>0</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>Right</Keys>
+    </Key>
+  </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Left_Command</Name>
+      <Acceleration>
+        <X>-1</X>
+        <Y>0</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>Left</Keys>
+    </Key>
+  </KeyBinding>
+</ArrayOfKeyBinding>

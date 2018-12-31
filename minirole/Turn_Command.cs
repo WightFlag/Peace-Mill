@@ -18,15 +18,23 @@ namespace Peace_Mill
             _spin = spin;
         }
 
+        public Turn_Command()
+        {
+        }
+
         public override void Execute(GameObject gameObject)
         {
-            if(gameObject.Velocity.X == 0)
-                gameObject.Execute(new RotateCommand(_spin));
+           
+        }
+
+        public override void Continue(GameObject gameObject)
+        {
+            if (gameObject.Velocity.X == 0)
+                gameObject.Continue(new RotateCommand(_spin));
         }
 
         public override void Terminate(GameObject gameObject)
         {
-            gameObject.Velocity = Vector2.Zero;
         }
     }
 }

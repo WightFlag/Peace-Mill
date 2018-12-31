@@ -44,6 +44,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdvanceFrame_Command.cs" />
     <Compile Include="AnimationController.cs" />
     <Compile Include="Animator.cs" />
     <Compile Include="Discarded\AnimatorTest.cs" />

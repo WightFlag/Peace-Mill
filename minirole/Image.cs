@@ -47,6 +47,7 @@ namespace Peace_Mill
         public Image() : base()
         {
             Name = "Image";
+            IsActive = false;
             graphicsDevice = ComponentManager.Instance.graphicsDevice;
             Path = String.Empty;
             Tint = Color.White;

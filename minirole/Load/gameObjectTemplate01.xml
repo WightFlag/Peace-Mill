@@ -44,8 +44,10 @@
   </SourceRect>
   <ComponentTypes />
   <ComponentList>
+
     <Component xsi:type="Image">
       <Name>Image</Name>
+      <IsActive>false</IsActive>
       <Path>Art/female_01</Path>
       <Tint>
         <B>255</B>
@@ -60,24 +62,10 @@
         <Y>24</Y>
       </Origin>
     </Component>
+    
     <Component xsi:type="Animator">
       <Name>gameObjectAnimator</Name>
-      <Spritesheet>
-        <Name>Image</Name>
-        <Path>Art/female_01</Path>
-        <Tint>
-          <B>255</B>
-          <G>255</G>
-          <R>255</R>
-          <A>255</A>
-          <PackedValue>4294967295</PackedValue>
-        </Tint>
-        <Alpha>1</Alpha>
-        <Origin>
-          <X>24</X>
-          <Y>24</Y>
-        </Origin>
-      </Spritesheet>
+
       <FrameSize>
         <X>48</X>
         <Y>48</Y>
@@ -91,7 +79,9 @@
         <Y>0</Y>
       </CurrentFrameIndex>
     </Component>
+    
 
+    
     <Component xsi:type="InputControllerOfScreenInputController">
       <Name>InputController</Name>
       <ObjectType>

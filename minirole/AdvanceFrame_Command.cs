@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class ScaleCommand :Command
+    public class AdvanceFrame_Command : Command
     {
-        private float _scale;
+        private Vector2 _acceleration;
 
-        public ScaleCommand(float scale)
+
+        public AdvanceFrame_Command(Vector2 acceleration)
         {
-            _scale = scale;
+            _acceleration = acceleration;
         }
-
-        public ScaleCommand()
-        {
-        }
-
         public override void Execute(GameObject gameObject)
         {
-            gameObject.Scale += _scale;
+
         }
 
         public override void Continue(GameObject gameObject)

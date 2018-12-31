@@ -19,7 +19,7 @@
     <Y>0</Y>
   </Position>
   <Rotation>0</Rotation>
-  <Scale>1</Scale>
+  <Scale>.2</Scale>
   <Velocity>
     <X>0</X>
     <Y>0</Y>
@@ -74,6 +74,10 @@
         <X>0</X>
         <Y>0</Y>
       </CurrentFrameIndex>
+      <DefaultFrameIndex>
+        <X>0</X>
+        <Y>0</Y>
+      </DefaultFrameIndex>
       <FrameOrigin>
         <X>1920</X>
         <Y>1080</Y>

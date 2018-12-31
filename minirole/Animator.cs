@@ -19,9 +19,12 @@ namespace Peace_Mill
         private Vector2 _frameSize;
         private Vector2 _frameSet;
         private Vector2 _currentFrameIndex;
+        private Vector2 _defaultFrameIndex;
         private Renderer _renderer;
-        //private Vector2 _localOffset;
         private Vector2 _frameOrigin;
+        private int _frameUpdateInterval;
+        private int _elapsedTime;
+
         [XmlIgnore]
         public List<List<Texture2D>> Frames { get => _frames; private set => _frames = value; }
 
@@ -29,8 +32,8 @@ namespace Peace_Mill
         public Vector2 FrameSize { get => _frameSize; set => _frameSize = value; }
         public Vector2 FrameSet { get => _frameSet; set => _frameSet = value; }
         public Vector2 CurrentFrameIndex { get => _currentFrameIndex; set => _currentFrameIndex = value; }
+        public Vector2 DefaultFrameIndex { get => _defaultFrameIndex; set => _defaultFrameIndex = value; }
         public Renderer Renderer { get => _renderer; set => _renderer = value; }
-        //public Vector2 LocalOffset { get => _localOffset; }
         public Vector2 FrameOrigin { get => _frameOrigin; }
 
         public Animator (GameObject gameObject)
@@ -38,6 +41,10 @@ namespace Peace_Mill
 
             this.gameObject = gameObject;
             this.Name = nameof(this.gameObject) + "Animator";
+            Frames = new List<List<Texture2D>>();
+            _frameUpdateInterval = 100;
+            _elapsedTime = 0;
+            _defaultFrameIndex = new Vector2(1, 0);
 
             //var type = typeof(T);
             //var constructor = type.GetConstructors();
@@ -47,37 +54,43 @@ namespace Peace_Mill
         {
             this.Name = "Animator";
             Frames = new List<List<Texture2D>>();
- 
+            _frameUpdateInterval = 100;
+            _elapsedTime = 0;
+            _defaultFrameIndex = new Vector2(1, 0);
         }
 
-        public void Initialize()
-        {
-            _frames = new List<List<Texture2D>>();
-            _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
-            _spriteSheet.LoadContent();
+        //public void Initialize()
+        //{
+        //    _frames = new List<List<Texture2D>>();
+        //    _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
+        //    _spriteSheet.LoadContent();
 
-            _frameSize = new Vector2(_spriteSheet.Texture.Width,_spriteSheet.Texture.Height);
-            _frameSet = Vector2.Zero;
-            _currentFrameIndex = Vector2.Zero;
-            _frameOrigin = new Vector2(_spriteSheet.Texture.Width/2, _spriteSheet.Texture.Height/2);
-        }
+        //    _frameSize = new Vector2(_spriteSheet.Texture.Width,_spriteSheet.Texture.Height);
+        //    _frameSet = Vector2.Zero;
+        //    _currentFrameIndex = Vector2.Zero;
+        //    _frameOrigin = new Vector2(_spriteSheet.Texture.Width/2, _spriteSheet.Texture.Height/2);
+        //}
 
-        public void Initialize(int tileWidth, int tileHeight, Vector2 initialFrameIndex)
-        {
-            _frames = new List<List<Texture2D>>();
+        //public void Initialize(int tileWidth, int tileHeight, Vector2 initialFrameIndex)
+        //{
+        //    _frames = new List<List<Texture2D>>();
 
-            _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
-            _spriteSheet.LoadContent();
+        //    _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
+        //    _spriteSheet.LoadContent();
 
-            _frameSize = new Vector2(tileWidth, tileHeight);
-            _frameSet = Vector2.Zero;
-            _currentFrameIndex = initialFrameIndex;
-            _frameOrigin = new Vector2(tileWidth / 2, tileHeight / 2);
-        }
+        //    _frameSize = new Vector2(tileWidth, tileHeight);
+        //    _frameSet = Vector2.Zero;
+        //    _currentFrameIndex = initialFrameIndex;
+        //    _frameOrigin = new Vector2(tileWidth / 2, tileHeight / 2);
+        //}
 
         public void AdvanceFrame()
         {
-            _currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
+            if(_elapsedTime > _frameUpdateInterval)
+            {
+                _currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
+                _elapsedTime -= _frameUpdateInterval;
+            }
         }
 
         public void SetFrameSequence(float row)
@@ -87,10 +100,9 @@ namespace Peace_Mill
 
         public override void LoadContent()
         {//establishes the frameset and sourceRect for render once the image has been loaded
-
+            IsActive = true;
             var tempIndex = Vector2.Zero;
-
-            _spriteSheet.gameObject = this.gameObject;
+            _spriteSheet = gameObject.GetComponent<Image>();
             _spriteSheet.LoadContent();
 
             gameObject.SourceRect = new Rectangle((int)(tempIndex.X * FrameSize.X), (int)(tempIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
@@ -111,13 +123,13 @@ namespace Peace_Mill
 
         public override void Update(GameTime gameTime)
         {
-           //AdvanceFrame();
-           //_localOffset = new Vector2((_currentFrameIndex.X * _frameSize.X - (_frameSize.X * (_frameSet.X + 1)/2)) * gameObject.Scale , (_currentFrameIndex.Y * _frameSize.Y - (_frameSize.Y * (_frameSet.Y+1)/2)) * gameObject.Scale); 
+            _elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (gameObject.Velocity == Vector2.Zero)
+                _currentFrameIndex.X = _defaultFrameIndex.X;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(_spriteSheet.Texture, gameObject.Position + _frameOrigin, gameObject.SourceRect, Color.White * _spriteSheet.Alpha, 0.0f, _frameOrigin, new Vector2(gameObject.Scale, gameObject.Scale), SpriteEffects.None, 0.0f);
             _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _frameOrigin);
         }
     }

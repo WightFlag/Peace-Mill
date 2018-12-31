@@ -94,6 +94,11 @@ namespace Peace_Mill
             command.Execute(this);
         }
 
+        public void Continue(Command command)
+        {
+            command.Continue(this);
+        }
+
         public void Termiante(Command command)
         {
             command.Terminate(this);
@@ -116,7 +121,7 @@ namespace Peace_Mill
             T component = (T)ComponentManager.Instance.Instantiate(type, this);
             component.gameObject = this;
             _components.Add(type, component);
-            //_componentTypes.Add(type.ToString().Substring(type.ToString().IndexOf(".")+1));
+            _componentTypes.Add(type.ToString().Substring(type.ToString().IndexOf(".")+1));
             _componentList.Add(component);
 
             return (T)component;

@@ -86,7 +86,7 @@ namespace Peace_Mill
                 {
                     for (var j = 0; j < bindings[i].Key.Count(); j++)
                     {
-                        if (!KeyPressed(bindings[i].Key[j]))
+                        if (!KeyPressed(bindings[i].Key[j]) && !KeyDown(bindings[i].Key[j]))
                             return false;
                         _keysDown.Add(bindings[i].Key[j]);
                     }
@@ -106,11 +106,11 @@ namespace Peace_Mill
                 {
                     for (var j = 0; j < bindings[i].Key.Count(); j++)
                     {
-                        if (!KeyReleased(bindings[i].Key[j]))
-                            return false;
-                        _keysDown.Remove(bindings[i].Key[j]);
+                        if (KeyReleased(bindings[i].Key[j]))
+                            return true;
+                        //_keysDown.Remove(bindings[i].Key[j]);
                     }
-                    return true;
+                    return false;
                 }
             }
             return false;

@@ -8,13 +8,21 @@ using Microsoft.Xna.Framework;
 
 namespace Peace_Mill
 {
-    class TranslateCommand : Command
+    public class TranslateCommand : Command
     {
         private Vector2 _movement;
+        public Vector2 Movement { get => _movement; set => _movement = value; }
 
         public TranslateCommand(Vector2 movement) { _movement = movement; }
 
+        public TranslateCommand() { }
+
         public override void Execute(GameObject gameObject)
+        {
+            Console.WriteLine($"Game Object Position.X: {gameObject.Position.X}");
+        }
+
+        public override void Continue(GameObject gameObject)
         {
             gameObject.Position += _movement;
             Console.WriteLine($"Game Object Position.X: {gameObject.Position.X}");

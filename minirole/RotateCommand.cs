@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    class RotateCommand : Command
+    public class RotateCommand : Command
     {
         private float _rotation;
 
@@ -15,9 +19,19 @@ namespace Peace_Mill
             _rotation = rotation;
         }
 
+        public RotateCommand()
+        {
+        }
+
         public override void Execute(GameObject gameObject)
         {
-           gameObject.Rotation += _rotation * 3.14159f / 180;
+
+        }
+
+        public override void Continue(GameObject gameObject)
+        {
+            if(gameObject.Velocity == Vector2.Zero)
+                gameObject.Rotation += _rotation * 3.14159f / 180;
         }
 
         public override void Terminate(GameObject gameObject)
