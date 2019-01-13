@@ -47,6 +47,7 @@
     <Compile Include="AdvanceFrame_Command.cs" />
     <Compile Include="AnimationController.cs" />
     <Compile Include="Animator.cs" />
+    <Compile Include="Camera.cs" />
     <Compile Include="Discarded\AnimatorTest.cs" />
     <Compile Include="CollisionManager.cs" />
     <Compile Include="Command.cs" />
@@ -58,10 +59,12 @@
     <Compile Include="KeyBinding.cs" />
     <Compile Include="KeyMap.cs" />
     <Compile Include="LocalTransform.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Move_Command.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="RotateCommand.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="Tile.cs" />
     <Compile Include="Turn_Command.cs" />
     <Compile Include="ScaleCommand.cs" />
     <Compile Include="ScreenInputController.cs" />
@@ -150,6 +153,9 @@
     <Content Include="Load\animator.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Load\backgroundTest.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Load\gameObjectTemplate.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -158,6 +164,9 @@
     </Content>
     <Content Include="Load\image.xml" />
     <Content Include="Load\SplashScreen01.xml" />
+    <Content Include="sceneTemplate.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Art\" />

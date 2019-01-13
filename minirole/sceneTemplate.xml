@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Scene xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Paths>
+
+    <string>Load\gameObjectTemplateRevised0.xml</string>
+    <string>Load\gameObjectTemplateRevised1.xml</string>
+  </Paths>
+</Scene>

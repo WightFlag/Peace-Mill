@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Peace_Mill
 {
-    public class GameObject
+    public class GameObject : Component
     {
         [XmlElement("Component")]
         public List<Component> Renderables;
@@ -20,11 +20,13 @@ namespace Peace_Mill
         private Vector2 _velocity;
         private Transform _transform;
 
+        //private Layer _layer;
         private bool _isActive;
         private Rectangle _sourceRect;
         private List<string> _componentTypes;
-        private List<Component> _componentList;
+        //private List<Component> _componentList;
         private Dictionary<Type,object> _components;
+        
 
         public Rectangle Dimensions;
         //public Rectangle Dimensions { get => _dimensions; set => _dimensions = value; }
@@ -35,10 +37,11 @@ namespace Peace_Mill
         public Vector2 Velocity { get => _velocity; set => _velocity = value; }
         public Transform Transform { get => _transform; set => _transform = value; }
 
+        //public Layer Layer { get => _layer; set => _layer = value; }
         public bool IsActive { get => _isActive; set => _isActive = value; }
         public Rectangle SourceRect { get => _sourceRect; set => _sourceRect = value; }
         public List<string> ComponentTypes { get => _componentTypes; set => _componentTypes = value; }
-        public List<Component> ComponentList { get => _componentList; set => _componentList = value; }
+       // public List<Component> ComponentList { get => _componentList; set => _componentList = value; }
         [XmlIgnore]
         public Dictionary<Type, object> Components { get => _components; set => _components = value; }
 
@@ -46,11 +49,11 @@ namespace Peace_Mill
         #region Constructors
 
         public GameObject()
-        {
+        {            
             _components = new Dictionary<Type, object>();
             //Components = new Dictionary<Type, object>();
             _componentTypes = new List<string>();
-            _componentList = new List<Component>();
+            //_componentList = new List<Component>();
 
             Renderables = new List<Component>();
 
@@ -64,6 +67,8 @@ namespace Peace_Mill
             Transform = new Transform(this);
 
             //InitializePreDefinedComponents();
+
+
         }
 
         private void InitializePreDefinedComponents()
@@ -112,7 +117,13 @@ namespace Peace_Mill
         public T GetComponent<T>() where T: Component 
         {
             Type type = typeof(T);
-            return _components.ContainsKey(type) ? (T)Convert.ChangeType(_components[type], type) : default(T);
+            for(var i = 0; _children[i] != null; i++)
+            {
+                if (_children[i].GetType() == type)
+                    return (T)Convert.ChangeType(_children[i], type);
+            }
+            return default(T);
+            //return _components.ContainsKey(type) ? (T)Convert.ChangeType(_components[type], type) : default(T);
         }
 
         public T AddCompnent<T>() where T: Component
@@ -120,9 +131,10 @@ namespace Peace_Mill
             Type type = typeof(T);
             T component = (T)ComponentManager.Instance.Instantiate(type, this);
             component.gameObject = this;
-            _components.Add(type, component);
-            _componentTypes.Add(type.ToString().Substring(type.ToString().IndexOf(".")+1));
-            _componentList.Add(component);
+            //_components.Add(type, component);
+            //_componentTypes.Add(type.ToString().Substring(type.ToString().IndexOf(".")+1));
+            //_componentList.Add(component);
+            AddChild(component);
 
             return (T)component;
         }
@@ -141,20 +153,32 @@ namespace Peace_Mill
 
         public void Initialize()
         {
-            for (var i = 0; i < _componentList.Count; i++)
+            //for (var i = 0; i < _componentList.Count; i++)
+            //{
+            //    _componentList[i].gameObject = this;
+            //    _components.Add(_componentList[i].GetType(), _componentList[i]);
+            //    //AddChild(_componentList[i]);
+            //}
+
+            for (var i = 0; _children[i] != null; i++)
             {
-                _componentList[i].gameObject = this;               
-                _components.Add(_componentList[i].GetType(), _componentList[i]);
+                _children[i].gameObject = this;
             }
         }
 
         public void LoadContent()
         {
-            foreach (Component c in Components.Values)
+            //foreach (Component c in Components.Values)
+            //{
+            //    c.LoadContent();
+            //    if (c is IRenderable)
+            //        Renderables.Add(c);
+            //}
+            for(var i = 0; _children[i] != null; i++)
             {
-                c.LoadContent();
-                if (c is IRenderable)
-                    Renderables.Add(c);
+                _children[i].LoadContent();
+                if (_children[i] is IRenderable)
+                    Renderables.Add(_children[i]);
             }
         }
 
@@ -164,8 +188,10 @@ namespace Peace_Mill
 
         public void Update(GameTime gameTime)
         {
-            foreach (Component c in Components.Values)
-                c.Update(gameTime);
+            //foreach (Component c in Components.Values)
+            //    c.Update(gameTime);
+            for (var i = 0; _children[i] != null; i++)
+                _children[i].Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

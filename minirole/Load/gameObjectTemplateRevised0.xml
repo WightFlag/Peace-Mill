@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsActive>false</IsActive>
+  <Children>
+    <Component xsi:type="Animator">
+      <IsActive>false</IsActive>
+      <Name>gameObjectAnimator</Name>
+      <Children>
+        <Component xsi:nil="true" />
+      </Children>
+      <Spritesheet>
+        <IsActive>false</IsActive>
+        <Name>Image</Name>
+        <Children>
+          <Component xsi:nil="true" />
+        </Children>
+        <Path>bclog</Path>
+        <Tint>
+          <B>255</B>
+          <G>255</G>
+          <R>255</R>
+          <A>255</A>
+          <PackedValue>4294967295</PackedValue>
+        </Tint>
+        <Alpha>1</Alpha>
+        <Origin>
+          <X>1920</X>
+          <Y>1080</Y>
+        </Origin>
+      </Spritesheet>
+      <FrameSize>
+        <X>3840</X>
+        <Y>2160</Y>
+      </FrameSize>
+      <FrameSet>
+        <X>0</X>
+        <Y>0</Y>
+      </FrameSet>
+      <CurrentFrameIndex>
+        <X>0</X>
+        <Y>0</Y>
+      </CurrentFrameIndex>
+      <DefaultFrameIndex>
+        <X>0</X>
+        <Y>0</Y>
+      </DefaultFrameIndex>
+    </Component>
+    <Component xsi:type="Image">
+      <IsActive>false</IsActive>
+      <Name>Image</Name>
+      <Children>
+        <Component xsi:nil="true" />
+      </Children>
+      <Path>bclog</Path>
+      <Tint>
+        <B>255</B>
+        <G>255</G>
+        <R>255</R>
+        <A>255</A>
+        <PackedValue>4294967295</PackedValue>
+      </Tint>
+      <Alpha>1</Alpha>
+      <Origin>
+        <X>1920</X>
+        <Y>1080</Y>
+      </Origin>
+    </Component>
+    <Component xsi:nil="true" />
+    <Component xsi:nil="true" />
+  </Children>
+  <Dimensions>
+    <X>0</X>
+    <Y>0</Y>
+    <Width>0</Width>
+    <Height>0</Height>
+    <Location>
+      <X>0</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <X>0</X>
+      <Y>0</Y>
+    </Size>
+  </Dimensions>
+  <Position>
+    <X>0</X>
+    <Y>0</Y>
+  </Position>
+  <Rotation>0</Rotation>
+  <Scale>1</Scale>
+  <Velocity>
+    <X>0</X>
+    <Y>0</Y>
+  </Velocity>
+  <Transform>
+    <IsActive>false</IsActive>
+    <Name>Transform</Name>
+    <Children>
+      <Component xsi:nil="true" />
+    </Children>
+  </Transform>
+  <SourceRect>
+    <X>0</X>
+    <Y>0</Y>
+    <Width>3840</Width>
+    <Height>2160</Height>
+    <Location>
+      <X>0</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <X>3840</X>
+      <Y>2160</Y>
+    </Size>
+  </SourceRect>
+  <ComponentTypes />
+  
+</GameObject>

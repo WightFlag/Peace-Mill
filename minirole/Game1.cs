@@ -19,6 +19,7 @@ namespace Peace_Mill
         Animator animator;
         GameObject Player;
         GameObject thisObject;
+        Scene aScene;
 
         public Game1()
         {
@@ -55,50 +56,65 @@ namespace Peace_Mill
             ComponentManager.Instance.graphicsDevice = GraphicsDevice;
             ComponentManager.Instance.Content = Content;
 
-            var gameObjectLoader = new ContentLoader<GameObject>();
-            //var thisObject = new GameObject();
-            //thisObject.AddCompnent<Image>();
-            //thisObject.AddCompnent<Animator>();
-            //thisObject.AddCompnent<Collider>();
+            //var gameObjectLoader = new ContentLoader<GameObject>();
+            ////var thisObject = new GameObject();
+            ////thisObject.AddCompnent<Image>();
+            ////thisObject.AddCompnent<Animator>();
+            ////thisObject.AddCompnent<Collider>();
 
-            //thisObject = new GameObject();
-            //thisObject.AddCompnent<Animator>();
-
-
-            thisObject = gameObjectLoader.Load("Load/gameObjectTemplate01.xml");
-            thisObject.Initialize();
-            //thisObject.GetComponent<Animator>().Initialize();
+            ////thisObject = new GameObject();
+            ////thisObject.AddCompnent<Animator>();
 
 
-            //thisObject.AddCompnent <InputController<ScreenInputController>>();
-
-            //gameObjectLoader.Save("Load/gameObjectTemplate.xml", thisObject);
-
-            thisObject.LoadContent();
-            //thisObject.Scale = (float)graphics.PreferredBackBufferWidth/thisObject.SourceRect.Width;
-            //thisObject.SourceRect = new Rectangle(0, 0, 48, 48);
-
-            //var imageLoader = new ContentLoader<Image>();
-            //imageLoader.Save("Load/image.xml", thisObject.GetComponent<Image>());
-
-            //var animatorLoader = new ContentLoader<Animator>();
-            //animatorLoader.Save("Load/animator.xml",thisObject.GetComponent<Animator>());
-
-            //Screen = new GameObject();
-            //screenImage = Screen.AddCompnent<Image>();
-            //animator = Screen.AddCompnent<Animator>();
-            //Screen.AddCompnent<InputController<ScreenInputController>>();
-
-            //animator.Initialize();
-            //animator.Initialize(1920, 1080, Vector2.Zero);
-
-            //animator.gameObject.LoadContent();
-            //animator.gameObject.Scale = .20f;
-            //Player = new GameObject();
+            //thisObject = gameObjectLoader.Load("Load/gameObjectTemplate01.xml");
 
 
 
-            //animator.gameObject.Transform.Translate(new Vector2(240, 240));
+            //var aScene = new Scene();
+            //aScene.Add(thisObject);
+            //var sceneLoader = new ContentLoader<Scene>();
+            //sceneLoader.Save("sceneTemplate.xml", aScene);
+
+            //thisObject.Initialize();
+            ////thisObject.GetComponent<Animator>().Initialize();
+
+
+            ////thisObject.AddCompnent <InputController<ScreenInputController>>();
+
+            ////gameObjectLoader.Save("Load/gameObjectTemplate.xml", thisObject);
+
+            //thisObject.LoadContent();
+            ////thisObject.Scale = (float)graphics.PreferredBackBufferWidth/thisObject.SourceRect.Width;
+            ////thisObject.SourceRect = new Rectangle(0, 0, 48, 48);
+
+            ////var imageLoader = new ContentLoader<Image>();
+            ////imageLoader.Save("Load/image.xml", thisObject.GetComponent<Image>());
+
+            ////var animatorLoader = new ContentLoader<Animator>();
+            ////animatorLoader.Save("Load/animator.xml",thisObject.GetComponent<Animator>());
+
+            ////Screen = new GameObject();
+            ////screenImage = Screen.AddCompnent<Image>();
+            ////animator = Screen.AddCompnent<Animator>();
+            ////Screen.AddCompnent<InputController<ScreenInputController>>();
+
+            ////animator.Initialize();
+            ////animator.Initialize(1920, 1080, Vector2.Zero);
+
+            ////animator.gameObject.LoadContent();
+            ////animator.gameObject.Scale = .20f;
+            ////Player = new GameObject();
+
+
+
+            ////animator.gameObject.Transform.Translate(new Vector2(240, 240));
+
+
+            var sceneLoader = new ContentLoader<Scene>();
+            aScene = sceneLoader.Load("sceneTemplate.xml");
+            aScene.Initialize();
+
+            aScene.LoadContent();
 
 
             //**************************************************************************************************************************************************************************
@@ -131,8 +147,10 @@ namespace Peace_Mill
 
             //**************************************************************************************************************************************************************************
 
-            //animator.gameObject.Update(gameTime);
-            thisObject.Update(gameTime);
+            ////animator.gameObject.Update(gameTime);
+            //thisObject.Update(gameTime);
+
+            aScene.Update(gameTime);
 
             //**************************************************************************************************************************************************************************
 
@@ -151,9 +169,10 @@ namespace Peace_Mill
 
             spriteBatch.Begin();
 
-            //animator.gameObject.Draw(spriteBatch);
-            thisObject.Draw(spriteBatch);
+            ////animator.gameObject.Draw(spriteBatch);
+            //thisObject.Draw(spriteBatch);
 
+            aScene.Draw(spriteBatch);
 
             spriteBatch.End();
 
