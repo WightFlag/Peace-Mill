@@ -48,7 +48,7 @@ namespace Peace_Mill
         {
             _frames = new List<List<Texture2D>>();
 
-            _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
+            //_spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
             _spriteSheet.LoadContent();
 
             _frameSize = new Vector2(tileWidth, tileHeight);

@@ -23,9 +23,9 @@ namespace Peace_Mill
         //private Layer _layer;
         private bool _isActive;
         private Rectangle _sourceRect;
-        private List<string> _componentTypes;
+        //private List<string> _componentTypes;
         //private List<Component> _componentList;
-        private Dictionary<Type,object> _components;
+        //private Dictionary<Type,object> _components;
         
 
         public Rectangle Dimensions;
@@ -40,19 +40,19 @@ namespace Peace_Mill
         //public Layer Layer { get => _layer; set => _layer = value; }
         public bool IsActive { get => _isActive; set => _isActive = value; }
         public Rectangle SourceRect { get => _sourceRect; set => _sourceRect = value; }
-        public List<string> ComponentTypes { get => _componentTypes; set => _componentTypes = value; }
-       // public List<Component> ComponentList { get => _componentList; set => _componentList = value; }
-        [XmlIgnore]
-        public Dictionary<Type, object> Components { get => _components; set => _components = value; }
+        //public List<string> ComponentTypes { get => _componentTypes; set => _componentTypes = value; }
+        //public List<Component> ComponentList { get => _componentList; set => _componentList = value; }
+        //[XmlIgnore]
+        //public Dictionary<Type, object> Components { get => _components; set => _components = value; }
 
                
         #region Constructors
 
         public GameObject()
         {            
-            _components = new Dictionary<Type, object>();
+            //_components = new Dictionary<Type, object>();
             //Components = new Dictionary<Type, object>();
-            _componentTypes = new List<string>();
+            //_componentTypes = new List<string>();
             //_componentList = new List<Component>();
 
             Renderables = new List<Component>();
@@ -73,9 +73,9 @@ namespace Peace_Mill
 
         private void InitializePreDefinedComponents()
         {
-            _components = new Dictionary<Type, object>();
+            //_components = new Dictionary<Type, object>();
             //Components = new Dictionary<Type, object>();
-            _componentTypes = new List<string>();
+            //_componentTypes = new List<string>();
             //_componentList = new List<Component>();
 
             Renderables = new List<Component>();
@@ -109,10 +109,10 @@ namespace Peace_Mill
             command.Terminate(this);
         }
 
-        public bool HasComponent<T>()
-        {
-            return _components.Keys.Contains(typeof(T)) ? true : false;
-        }
+        //public bool HasComponent<T>()
+        //{
+        //    return _components.Keys.Contains(typeof(T)) ? true : false;
+        //}
 
         public T GetComponent<T>() where T: Component 
         {
