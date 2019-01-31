@@ -149,6 +149,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
+    <None Include="Load\animation01.anim" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

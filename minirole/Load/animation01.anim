@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsActive>false</IsActive>
+  <Children>
+    <Component xsi:nil="true" />
+  </Children>
+  <Frames>
+    <X>2</X>
+    <Y>3</Y>
+  </Frames>
+</Animation>

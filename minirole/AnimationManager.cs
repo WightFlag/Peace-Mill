@@ -53,9 +53,9 @@ namespace Peace_Mill
             return _currentSpriteSheetFrameSet;
         }
 
-        public Animation Generate(Texture2D[] frameSet)
+        public Animation Generate(Animator animator, Vector2 frameSet)
         {
-            return new Animation(frameSet);
+            return new Animation(animator, frameSet);
         }
     }
 }

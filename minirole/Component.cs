@@ -8,6 +8,7 @@ namespace Peace_Mill
 {
     [XmlInclude(typeof(Animator))]
     //[XmlInclude(typeof(Collider))]
+    [XmlInclude(typeof(Animation))]
     [XmlInclude(typeof(Image))]
     [XmlInclude(typeof(InputController<ScreenInputController>))]
     public abstract class Component
@@ -27,6 +28,7 @@ namespace Peace_Mill
         [XmlIgnore]
         public GameObject gameObject { get => _gameObject; set => _gameObject = value; }
         public bool IsActive;
+        //public Component Parent { get => _parent; set => _parent = value; }
         public Component[] Children { get => _children; set => _children = value; }
 
         public Component ()
@@ -49,11 +51,33 @@ namespace Peace_Mill
             _countOfChildren += 1;
             if (_countOfChildren > _children.Length / 2)
                 Array.Resize(ref _children, _countOfChildren * 2);
+            if (component._parent != null)
+                component._parent.RemoveChild(component);
             component._parent = this;
             component._gameObject = this._gameObject;
             _children[_countOfChildren-1] = component;
 
         }
+
+        public void RemoveChild(Component component)
+        {
+            for(var i = 0; i < _children.Length; i++)
+            {
+                if(_children[i] == component)
+                {
+                    for(var j = i + 1; j < _children.Length; j++)
+                    {
+                        if(j+1 == _children.Length)
+                        {
+                            Array.Resize(ref _children, _children.Length - 1);
+                            return;
+                        }
+                        _children[j] = _children[j + 1];
+                    }
+                }
+            }
+        }
+
 
         public virtual void LoadContent()
         {

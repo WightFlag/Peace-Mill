@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsActive>false</IsActive>
+  <Children>
+    <Component xsi:type="Image">
+      <IsActive>false</IsActive>
+      <Name>Image</Name>
+      <Children>
+        <Component xsi:nil="true" />
+      </Children>
+      <Path>Art/female_01</Path>
+      <Tint>
+        <B>255</B>
+        <G>255</G>
+        <R>255</R>
+        <A>255</A>
+        <PackedValue>4294967295</PackedValue>
+      </Tint>
+      <Alpha>1</Alpha>
+      <Origin>
+        <X>72</X>
+        <Y>96</Y>
+      </Origin>
+    </Component>
+    <Component xsi:nil="true" />
+  </Children>
+  <Frames>
+    <X>2</X>
+    <Y>3</Y>
+  </Frames>
+</Animation>
