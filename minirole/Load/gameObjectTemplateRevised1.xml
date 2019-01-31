@@ -59,17 +59,9 @@
           <string>Move_Left_Command</string>
           <string>Turn_Right_Command</string>
           <string>Turn_Left_Command</string>
-          <string>Move_Down_Command</string>
-          <string>Move_Up_Command</string>
-          <string>Move_Right_Command</string>
-          <string>Move_Left_Command</string>
-          <string>Turn_Right_Command</string>
-          <string>Turn_Left_Command</string>
         </Actions>
       </ObjectType>
     </Component>
-    <Component xsi:nil="true" />
-    <Component xsi:nil="true" />
     <Component xsi:nil="true" />
   </Children>
   <Dimensions>

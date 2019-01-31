@@ -24,6 +24,7 @@ namespace Peace_Mill
         private Vector2 _frameOrigin;
         private int _frameUpdateInterval;
         private int _elapsedTime;
+        private List<Animation> _animations;
 
         [XmlIgnore]
         public List<List<Texture2D>> Frames { get => _frames; private set => _frames = value; }
@@ -113,12 +114,12 @@ namespace Peace_Mill
                 _frames.Add(new List<Texture2D>());
                 for (tempIndex.Y = 0; tempIndex.Y <= _frameSet.Y; tempIndex.Y++)
                 {
-                    var image = _renderer.DrawFrame(new Rectangle((int)(tempIndex.X * _frameSize.X), (int)(tempIndex.Y * _frameSize.Y),(int)_frameSize.X,(int)_frameSize.Y), _spriteSheet);
-                    
+                    var image = _renderer.DrawFrame(new Rectangle((int)(tempIndex.X * _frameSize.X), (int)(tempIndex.Y * _frameSize.Y), (int)_frameSize.X, (int)_frameSize.Y), _spriteSheet);
+
                     _frames[(int)tempIndex.X].Add(image);
                 }
             }
-            _frameOrigin = new Vector2(FrameSize.X/2, FrameSize.Y/2);
+            _frameOrigin = new Vector2(FrameSize.X / 2, FrameSize.Y / 2);
         }
 
         public override void Update(GameTime gameTime)

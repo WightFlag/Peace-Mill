@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -115,6 +116,22 @@ namespace Peace_Mill
             aScene.Initialize();
 
             aScene.LoadContent();
+
+
+            var animLoader = new ContentLoader<Animation>();
+            Texture2D[,] set = AnimationManager.Instance.GenerateFrames(aScene.GameObjects[1].GetComponent<Animator>().Spritesheet, aScene.GameObjects[1].GetComponent<Animator>().FrameSize);
+            var row = new Texture2D[(int)aScene.GameObjects[1].GetComponent<Animator>().FrameSet.X];
+            for(var i = 0; i < row.Length; i++)
+            {
+                row[i] = set[0, i];
+            }
+            var anim1 = AnimationManager.Instance.Generate(row);
+            //animLoader.Save("animation01.anim", anim1);
+
+            //this line of code below is a temp fix to remove the laser beams from the sprite's feet. for some reason, the sourcerect is getting set to  (0,0,144,192) following the block above from "var animLoader".
+            //UPDATE: The gameobject sourcerect was being reset to the original texture size due to a call from AnimationManager.GenerateFrames() to spriteSheet.LoadContent(). This affected the aScene sprite gameObject
+            //because that is the spritesheet that was passed to AnimationManger.GenerateFrames() and as an object it was passed by reference by default.
+            //aScene.GameObjects[1].SourceRect = new Rectangle(0, 0, 48, 48);
 
 
             //**************************************************************************************************************************************************************************

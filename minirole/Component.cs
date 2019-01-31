@@ -33,8 +33,15 @@ namespace Peace_Mill
         {
             _countOfChildren = 0;
             _isActive = true;
-
             _children = new Component[1];
+        }
+
+        public Component(Component parent)
+        {
+            _countOfChildren = 0;
+            _isActive = true;
+            _children = new Component[1];
+            parent.AddChild(this);
         }
 
         public void AddChild(Component component)

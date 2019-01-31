@@ -11,14 +11,33 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Peace_Mill
 {
-    public class AnimationController : Controller
+    public class AnimationController :Script
     {
+        private Animator _animator;
+
         public AnimationController()
+        {           
+        }
+
+        public AnimationController(GameObject gameObject)
         {
-            Actions = new List<string>()
-            {
-                "Set_Frame_Squence"
-            };
+            this.gameObject = gameObject;
+            this._animator = this.gameObject.GetComponent<Animator>();
+        }
+
+        public override void LoadContent()
+        {
+            base.LoadContent();     
+        }
+
+        public override void UnloadContent()
+        {
+            base.UnloadContent();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
         }
     }
 }

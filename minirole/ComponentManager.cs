@@ -33,6 +33,22 @@ namespace Peace_Mill
             }
         }
 
+        public T AddCompnent<T>(ref GameObject gameObject) where T : Component
+        {
+            Type type = typeof(T);
+            T component = (T)ComponentManager.Instance.Instantiate(type, gameObject);
+            component.gameObject = gameObject;
+            gameObject.AddChild(component);
+
+            return (T)component;
+        }
+
+        //Refactoring required based on revised _children Component/GameObject structure.
+        //public bool HasComponent<T>(GameObject gameObject)
+        //{
+        //    return gameObject._components.Keys.Contains(typeof(T)) ? true : false;
+        //}
+
         public Type GetComponentType(string component)
         {
             var assembly = Assembly.GetExecutingAssembly();
