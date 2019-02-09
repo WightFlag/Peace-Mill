@@ -26,36 +26,6 @@
       <IsActive>true</IsActive>
       <Name>gameObjectAnimator</Name>
       <Children>
-        <Component xsi:type="Animation">
-          <IsActive>false</IsActive>
-          <Children>
-            <Component xsi:type="Image">
-              <IsActive>false</IsActive>
-              <Name>Image</Name>
-              <Children>
-                <Component xsi:nil="true" />
-              </Children>
-              <Path>Art/female_01</Path>
-              <Tint>
-                <B>255</B>
-                <G>255</G>
-                <R>255</R>
-                <A>255</A>
-                <PackedValue>4294967295</PackedValue>
-              </Tint>
-              <Alpha>1</Alpha>
-              <Origin>
-                <X>72</X>
-                <Y>96</Y>
-              </Origin>
-            </Component>
-            <Component xsi:nil="true" />
-          </Children>
-          <Frames>
-            <X>2</X>
-            <Y>3</Y>
-          </Frames>
-        </Component>
         <Component xsi:nil="true" />
       </Children>
       <Spritesheet>
@@ -100,6 +70,268 @@
           <Component xsi:nil="true" />
         </Children>
       </Renderer>
+      <Animations>
+        <Animation>
+          <IsActive>false</IsActive>
+          <Children>
+            <Component xsi:nil="true" />
+          </Children>
+          <FrameUpdateInterval>100</FrameUpdateInterval>
+          <FrameCoordinates>
+            <Vector2>
+              <X>0</X>
+              <Y>0</Y>
+            </Vector2>
+            <Vector2>
+              <X>1</X>
+              <Y>0</Y>
+            </Vector2>
+            <Vector2>
+              <X>2</X>
+              <Y>0</Y>
+            </Vector2>
+          </FrameCoordinates>
+          <Frames>
+            <Rectangle>
+              <X>0</X>
+              <Y>0</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>0</X>
+                <Y>0</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>48</X>
+              <Y>0</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>48</X>
+                <Y>0</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>96</X>
+              <Y>0</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>96</X>
+                <Y>0</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+          </Frames>
+        </Animation>
+        <Animation>
+          <IsActive>false</IsActive>
+          <Children>
+            <Component xsi:nil="true" />
+          </Children>
+          <FrameUpdateInterval>100</FrameUpdateInterval>
+          <FrameCoordinates>
+            <Vector2>
+              <X>0</X>
+              <Y>1</Y>
+            </Vector2>
+            <Vector2>
+              <X>1</X>
+              <Y>1</Y>
+            </Vector2>
+            <Vector2>
+              <X>2</X>
+              <Y>1</Y>
+            </Vector2>
+          </FrameCoordinates>
+          <Frames>
+            <Rectangle>
+              <X>0</X>
+              <Y>48</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>0</X>
+                <Y>48</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>48</X>
+              <Y>48</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>48</X>
+                <Y>48</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>96</X>
+              <Y>48</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>96</X>
+                <Y>48</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+          </Frames>
+        </Animation>
+        <Animation>
+          <IsActive>false</IsActive>
+          <Children>
+            <Component xsi:nil="true" />
+          </Children>
+          <FrameUpdateInterval>100</FrameUpdateInterval>
+          <FrameCoordinates>
+            <Vector2>
+              <X>0</X>
+              <Y>2</Y>
+            </Vector2>
+            <Vector2>
+              <X>1</X>
+              <Y>2</Y>
+            </Vector2>
+            <Vector2>
+              <X>2</X>
+              <Y>2</Y>
+            </Vector2>
+          </FrameCoordinates>
+          <Frames>
+            <Rectangle>
+              <X>0</X>
+              <Y>96</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>0</X>
+                <Y>96</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>48</X>
+              <Y>96</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>48</X>
+                <Y>96</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>96</X>
+              <Y>96</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>96</X>
+                <Y>96</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+          </Frames>
+        </Animation>
+        <Animation>
+          <IsActive>false</IsActive>
+          <Children>
+            <Component xsi:nil="true" />
+          </Children>
+          <FrameUpdateInterval>100</FrameUpdateInterval>
+          <FrameCoordinates>
+            <Vector2>
+              <X>0</X>
+              <Y>3</Y>
+            </Vector2>
+            <Vector2>
+              <X>1</X>
+              <Y>3</Y>
+            </Vector2>
+            <Vector2>
+              <X>2</X>
+              <Y>3</Y>
+            </Vector2>
+          </FrameCoordinates>
+          <Frames>
+            <Rectangle>
+              <X>0</X>
+              <Y>144</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>0</X>
+                <Y>144</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>48</X>
+              <Y>144</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>48</X>
+                <Y>144</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+            <Rectangle>
+              <X>96</X>
+              <Y>144</Y>
+              <Width>48</Width>
+              <Height>48</Height>
+              <Location>
+                <X>96</X>
+                <Y>144</Y>
+              </Location>
+              <Size>
+                <X>48</X>
+                <Y>48</Y>
+              </Size>
+            </Rectangle>
+          </Frames>
+        </Animation>
+      </Animations>
     </Component>
     <Component xsi:type="InputControllerOfScreenInputController">
       <IsActive>false</IsActive>
@@ -126,85 +358,7 @@
     </Component>
     <Component xsi:nil="true" />
   </Children>
-  <Component xsi:type="Animator">
-    <IsActive>true</IsActive>
-    <Name>gameObjectAnimator</Name>
-    <Children>
-      <Component xsi:type="Animation">
-        <IsActive>false</IsActive>
-        <Children>
-          <Component xsi:type="Image">
-            <IsActive>false</IsActive>
-            <Name>Image</Name>
-            <Children>
-              <Component xsi:nil="true" />
-            </Children>
-            <Path>Art/female_01</Path>
-            <Tint>
-              <B>255</B>
-              <G>255</G>
-              <R>255</R>
-              <A>255</A>
-              <PackedValue>4294967295</PackedValue>
-            </Tint>
-            <Alpha>1</Alpha>
-            <Origin>
-              <X>72</X>
-              <Y>96</Y>
-            </Origin>
-          </Component>
-          <Component xsi:nil="true" />
-        </Children>
-        <Frames>
-          <X>2</X>
-          <Y>3</Y>
-        </Frames>
-      </Component>
-      <Component xsi:nil="true" />
-    </Children>
-    <Spritesheet>
-      <IsActive>false</IsActive>
-      <Name>Image</Name>
-      <Children>
-        <Component xsi:nil="true" />
-      </Children>
-      <Path>Art/female_01</Path>
-      <Tint>
-        <B>255</B>
-        <G>255</G>
-        <R>255</R>
-        <A>255</A>
-        <PackedValue>4294967295</PackedValue>
-      </Tint>
-      <Alpha>1</Alpha>
-      <Origin>
-        <X>72</X>
-        <Y>96</Y>
-      </Origin>
-    </Spritesheet>
-    <FrameSize>
-      <X>48</X>
-      <Y>48</Y>
-    </FrameSize>
-    <FrameSet>
-      <X>2</X>
-      <Y>3</Y>
-    </FrameSet>
-    <CurrentFrameIndex>
-      <X>1</X>
-      <Y>0</Y>
-    </CurrentFrameIndex>
-    <DefaultFrameIndex>
-      <X>1</X>
-      <Y>0</Y>
-    </DefaultFrameIndex>
-    <Renderer>
-      <IsActive>false</IsActive>
-      <Children>
-        <Component xsi:nil="true" />
-      </Children>
-    </Renderer>
-  </Component>
+  
   <Dimensions>
     <X>0</X>
     <Y>0</Y>
@@ -220,7 +374,7 @@
     </Size>
   </Dimensions>
   <Position>
-    <X>-0</X>
+    <X>0</X>
     <Y>0</Y>
   </Position>
   <Rotation>0</Rotation>

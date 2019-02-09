@@ -13,7 +13,6 @@ namespace Peace_Mill
 {
     public class Animator : Component, IRenderable
     {
-        //private T animationType;
         private List<List<Texture2D>> _frames;
         private Image _spriteSheet;
         private Vector2 _frameSize;
@@ -36,6 +35,7 @@ namespace Peace_Mill
         public Vector2 DefaultFrameIndex { get => _defaultFrameIndex; set => _defaultFrameIndex = value; }
         public Renderer Renderer { get => _renderer; set => _renderer = value; }
         public Vector2 FrameOrigin { get => _frameOrigin; }
+        public List<Animation> Animations { get => _animations; set => _animations = value; }
 
         public Animator (GameObject gameObject)
         {
@@ -47,9 +47,6 @@ namespace Peace_Mill
             _elapsedTime = 0;
             _defaultFrameIndex = new Vector2(1, 0);
 
-            //var type = typeof(T);
-            //var constructor = type.GetConstructors();
-            //animationType = (T)constructor[0].Invoke(new object[] { gameObject});
         }
         public Animator()
         {
@@ -59,31 +56,6 @@ namespace Peace_Mill
             _elapsedTime = 0;
             _defaultFrameIndex = new Vector2(1, 0);
         }
-
-        //public void Initialize()
-        //{
-        //    _frames = new List<List<Texture2D>>();
-        //    _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
-        //    _spriteSheet.LoadContent();
-
-        //    _frameSize = new Vector2(_spriteSheet.Texture.Width,_spriteSheet.Texture.Height);
-        //    _frameSet = Vector2.Zero;
-        //    _currentFrameIndex = Vector2.Zero;
-        //    _frameOrigin = new Vector2(_spriteSheet.Texture.Width/2, _spriteSheet.Texture.Height/2);
-        //}
-
-        //public void Initialize(int tileWidth, int tileHeight, Vector2 initialFrameIndex)
-        //{
-        //    _frames = new List<List<Texture2D>>();
-
-        //    _spriteSheet = gameObject.HasComponent<Image>() ? gameObject.GetComponent<Image>() : gameObject.AddCompnent<Image>();
-        //    _spriteSheet.LoadContent();
-
-        //    _frameSize = new Vector2(tileWidth, tileHeight);
-        //    _frameSet = Vector2.Zero;
-        //    _currentFrameIndex = initialFrameIndex;
-        //    _frameOrigin = new Vector2(tileWidth / 2, tileHeight / 2);
-        //}
 
         public void AdvanceFrame()
         {
@@ -101,6 +73,7 @@ namespace Peace_Mill
 
         public override void LoadContent()
         {//establishes the frameset and sourceRect for render once the image has been loaded
+
             IsActive = true;
             var tempIndex = Vector2.Zero;
             _spriteSheet = gameObject.GetComponent<Image>();
@@ -109,16 +82,7 @@ namespace Peace_Mill
             gameObject.SourceRect = new Rectangle((int)(tempIndex.X * FrameSize.X), (int)(tempIndex.Y * FrameSize.Y), (int)FrameSize.X, (int)FrameSize.Y);
 
             _renderer = new Renderer(gameObject);
-            for (tempIndex.X = 0; tempIndex.X <= _frameSet.X; tempIndex.X++)
-            {
-                _frames.Add(new List<Texture2D>());
-                for (tempIndex.Y = 0; tempIndex.Y <= _frameSet.Y; tempIndex.Y++)
-                {
-                    var image = _renderer.DrawFrame(new Rectangle((int)(tempIndex.X * _frameSize.X), (int)(tempIndex.Y * _frameSize.Y), (int)_frameSize.X, (int)_frameSize.Y), _spriteSheet);
 
-                    _frames[(int)tempIndex.X].Add(image);
-                }
-            }
             _frameOrigin = new Vector2(FrameSize.X / 2, FrameSize.Y / 2);
         }
 
@@ -131,7 +95,7 @@ namespace Peace_Mill
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _frameOrigin);
+            _renderer.Draw(spriteBatch, _spriteSheet.Texture, _frameOrigin, _animations[(int)_currentFrameIndex.Y].Frames[(int)_currentFrameIndex.X]);
         }
     }
 }

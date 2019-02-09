@@ -101,7 +101,7 @@ namespace Peace_Mill
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            _renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _localOffset);
+            //_renderer.Draw(spriteBatch, _frames[(int)_currentFrameIndex.X][(int)_currentFrameIndex.Y], _localOffset);
         }
     }
 }

@@ -50,6 +50,37 @@
           <Component xsi:nil="true" />
         </Children>
       </Renderer>
+      <Animations>
+        <Animation>
+          <IsActive>false</IsActive>
+          <Children>
+            <Component xsi:nil="true" />
+          </Children>
+          <FrameUpdateInterval>100</FrameUpdateInterval>
+          <FrameCoordinates>
+            <Vector2>
+              <X>0</X>
+              <Y>0</Y>
+            </Vector2>
+          </FrameCoordinates>
+          <Frames>
+            <Rectangle>
+              <X>0</X>
+              <Y>0</Y>
+              <Width>3840</Width>
+              <Height>2160</Height>
+              <Location>
+                <X>0</X>
+                <Y>0</Y>
+              </Location>
+              <Size>
+                <X>3840</X>
+                <Y>2160</Y>
+              </Size>
+            </Rectangle>
+          </Frames>
+        </Animation>
+      </Animations>
     </Component>
     <Component xsi:type="Image">
       <IsActive>false</IsActive>
@@ -74,55 +105,7 @@
     <Component xsi:nil="true" />
     <Component xsi:nil="true" />
   </Children>
-  <Component xsi:type="Animator">
-    <IsActive>true</IsActive>
-    <Name>gameObjectAnimator</Name>
-    <Children>
-      <Component xsi:nil="true" />
-    </Children>
-    <Spritesheet>
-      <IsActive>false</IsActive>
-      <Name>Image</Name>
-      <Children>
-        <Component xsi:nil="true" />
-      </Children>
-      <Path>bclog</Path>
-      <Tint>
-        <B>255</B>
-        <G>255</G>
-        <R>255</R>
-        <A>255</A>
-        <PackedValue>4294967295</PackedValue>
-      </Tint>
-      <Alpha>1</Alpha>
-      <Origin>
-        <X>1920</X>
-        <Y>1080</Y>
-      </Origin>
-    </Spritesheet>
-    <FrameSize>
-      <X>3840</X>
-      <Y>2160</Y>
-    </FrameSize>
-    <FrameSet>
-      <X>0</X>
-      <Y>0</Y>
-    </FrameSet>
-    <CurrentFrameIndex>
-      <X>0</X>
-      <Y>0</Y>
-    </CurrentFrameIndex>
-    <DefaultFrameIndex>
-      <X>0</X>
-      <Y>0</Y>
-    </DefaultFrameIndex>
-    <Renderer>
-      <IsActive>false</IsActive>
-      <Children>
-        <Component xsi:nil="true" />
-      </Children>
-    </Renderer>
-  </Component>
+  
   <Dimensions>
     <X>0</X>
     <Y>0</Y>

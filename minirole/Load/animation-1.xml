@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsActive>false</IsActive>
+  <Children>
+    <Component xsi:nil="true" />
+  </Children>
+  <FrameUpdateInterval>100</FrameUpdateInterval>
+  <FrameCoordinates>
+    <Vector2>
+      <X>0</X>
+      <Y>0</Y>
+    </Vector2>
+  </FrameCoordinates>
+  <Frames>
+    <Rectangle>
+      <X>0</X>
+      <Y>0</Y>
+      <Width>3840</Width>
+      <Height>2160</Height>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <Size>
+        <X>3840</X>
+        <Y>2160</Y>
+      </Size>
+    </Rectangle>
+  </Frames>
+</Animation>

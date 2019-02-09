@@ -24,8 +24,5 @@
     </Component>
     <Component xsi:nil="true" />
   </Children>
-  <Frames>
-    <X>2</X>
-    <Y>3</Y>
-  </Frames>
+  <FrameUpdateInterval>0</FrameUpdateInterval>
 </Animation>

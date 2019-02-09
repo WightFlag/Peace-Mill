@@ -67,6 +67,7 @@
     <Compile Include="RotateCommand.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="Script.cs" />
+    <Compile Include="SpriteSheet.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Turn_Command.cs" />
     <Compile Include="ScaleCommand.cs" />
@@ -166,6 +167,8 @@
     <Content Include="Load\gameObjectTemplate01.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Load\gameObjectTemplateReRevised0.xml" />
+    <Content Include="Load\gameObjectTemplateReRevised1.xml" />
     <Content Include="Load\gameObjectTemplateRevised0.xml" />
     <Content Include="Load\gameObjectTemplateRevised1.xml" />
     <Content Include="Load\image.xml" />

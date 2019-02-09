@@ -13,8 +13,6 @@ namespace Peace_Mill
         [XmlElement("Component")]
         public List<Component> Renderables;
 
-        //private Rectangle _dimensions;
-        //private Vector2 _position;
         private float _rotation;
         private float _scale;
         private Vector2 _velocity;
@@ -27,9 +25,7 @@ namespace Peace_Mill
         
 
         public Rectangle Dimensions;
-        //public Rectangle Dimensions { get => _dimensions; set => _dimensions = value; }
         public Vector2 Position;
-        //public Vector2 Position { get => _position; set => _position = value; }
         public float Rotation { get => _rotation; set => _rotation = value; }
         public float Scale { get => _scale; set => _scale = value; }
         public Vector2 Velocity { get => _velocity; set => _velocity = value; }

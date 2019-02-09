@@ -44,12 +44,26 @@ namespace Peace_Mill
             return RenderTarget;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 origin)
+        //public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 origin)
+        //{
+        //    spriteBatch.Draw(
+        //        texture,
+        //        CenterOrigin(),
+        //        gameObject.SourceRect,
+        //        _image.Tint * _image.Alpha,
+        //        gameObject.Rotation,
+        //        origin,
+        //        gameObject.Scale,
+        //        SpriteEffects.None,
+        //        0.0f);
+        //}
+
+        public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 origin, Rectangle rectangle)
         {
             spriteBatch.Draw(
                 texture,
                 CenterOrigin(),
-                gameObject.SourceRect,
+                rectangle,
                 _image.Tint * _image.Alpha,
                 gameObject.Rotation,
                 origin,

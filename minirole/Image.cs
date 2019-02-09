@@ -20,9 +20,6 @@ namespace Peace_Mill
         public string Path;
         [XmlIgnore]
         public Texture2D Texture;
-        //public Texture2D RenderTarget;
-
-        //private Animator _animator;
         private Vector2 _origin;
 
         
@@ -30,8 +27,6 @@ namespace Peace_Mill
         public float Alpha;
         public Vector2 Origin { get => _origin; set => _origin = value; }
         
-        //public Animator Animator { get => _animator; }
-
         public Image(GameObject gameObject) : base()
         {
             Name = "Image";
@@ -40,8 +35,6 @@ namespace Peace_Mill
             Tint = Color.White;
             Alpha = 1.0f;
             this.gameObject = gameObject;
-
-            //Path = "bclog";
         }
 
         public Image() : base()
@@ -52,8 +45,6 @@ namespace Peace_Mill
             Path = String.Empty;
             Tint = Color.White;
             Alpha = 1.0f;
-
-           //Path = "bclog";
         }
 
         public override void LoadContent()
