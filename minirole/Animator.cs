@@ -62,7 +62,7 @@ namespace Peace_Mill
             if(_elapsedTime > _frameUpdateInterval)
             {
                 _currentFrameIndex.X = _currentFrameIndex.X < FrameSet.X ? _currentFrameIndex.X + 1 : 0;
-                _elapsedTime -= _frameUpdateInterval;
+                _elapsedTime = 0;
             }
         }
 

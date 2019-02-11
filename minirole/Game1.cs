@@ -63,6 +63,8 @@ namespace Peace_Mill
 
             aScene.LoadContent();
 
+
+
             //**************************************************************************************************************************************************************************
 
             // TODO: use this.Content to load your game content here
@@ -87,6 +89,7 @@ namespace Peace_Mill
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            CollisionManager.Instance.Update(gameTime);
             InputHandler.Instance().Update(gameTime);
 
             // TODO: Add your update logic here
@@ -99,6 +102,7 @@ namespace Peace_Mill
             aScene.Update(gameTime);
 
             //**************************************************************************************************************************************************************************
+
 
             base.Update(gameTime);
         }

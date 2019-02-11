@@ -48,4 +48,52 @@
       <Keys>Left</Keys>
     </Key>
   </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Down_CommandP2</Name>
+      <Acceleration>
+        <X>0</X>
+        <Y>1</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>S</Keys>
+    </Key>
+  </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Up_CommandP2</Name>
+      <Acceleration>
+        <X>0</X>
+        <Y>-1</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>W</Keys>
+    </Key>
+  </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Right_CommandP2</Name>
+      <Acceleration>
+        <X>1</X>
+        <Y>0</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>D</Keys>
+    </Key>
+  </KeyBinding>
+  <KeyBinding>
+    <Command xsi:type="Move_Command">
+      <Name>Move_Left_CommandP2</Name>
+      <Acceleration>
+        <X>-1</X>
+        <Y>0</Y>
+      </Acceleration>
+    </Command>
+    <Key>
+      <Keys>A</Keys>
+    </Key>
+  </KeyBinding>
 </ArrayOfKeyBinding>

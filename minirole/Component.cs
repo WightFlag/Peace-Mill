@@ -11,6 +11,7 @@ namespace Peace_Mill
     [XmlInclude(typeof(Animation))]
     [XmlInclude(typeof(Image))]
     [XmlInclude(typeof(InputController<ScreenInputController>))]
+    [XmlInclude(typeof(Collider))]
     public abstract class Component
     {
         private string _name;

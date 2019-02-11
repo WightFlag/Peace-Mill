@@ -169,6 +169,7 @@
     </Content>
     <Content Include="Load\gameObjectTemplateReRevised0.xml" />
     <Content Include="Load\gameObjectTemplateReRevised1.xml" />
+    <Content Include="Load\gameObjectTemplateReRevised2.xml" />
     <Content Include="Load\gameObjectTemplateRevised0.xml" />
     <Content Include="Load\gameObjectTemplateRevised1.xml" />
     <Content Include="Load\image.xml" />

@@ -8,7 +8,7 @@
       <Children>
         <Component xsi:nil="true" />
       </Children>
-      <Path>Art/female_01</Path>
+      <Path>Art/female_02</Path>
       <Tint>
         <B>255</B>
         <G>255</G>
@@ -28,7 +28,7 @@
       <Children>
         <Component xsi:nil="true" />
       </Children>
-     
+      
       <FrameSize>
         <X>48</X>
         <Y>48</Y>
@@ -322,12 +322,12 @@
       </Children>
       <ObjectType>
         <Actions>
-          <string>Move_Down_Command</string>
-          <string>Move_Up_Command</string>
-          <string>Move_Right_Command</string>
-          <string>Move_Left_Command</string>
-          <string>Turn_Right_Command</string>
-          <string>Turn_Left_Command</string>          
+          <string>Move_Down_CommandP2</string>
+          <string>Move_Up_CommandP2</string>
+          <string>Move_Right_CommandP2</string>
+          <string>Move_Left_CommandP2</string>
+          <string>Turn_Right_CommandP2</string>
+          <string>Turn_Left_CommandP2</string>
         </Actions>
       </ObjectType>
     </Component>
@@ -367,8 +367,8 @@
     </Size>
   </Dimensions>
   <Position>
-    <X>0</X>
-    <Y>0</Y>
+    <X>-100</X>
+    <Y>-100</Y>
   </Position>
   <Rotation>0</Rotation>
   <Scale>1</Scale>

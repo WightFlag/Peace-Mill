@@ -35,7 +35,12 @@ namespace Peace_Mill
                             new KeyBinding(new Move_Command("Move_Down_Command", new Vector2(0, 1)), Keys.Down),
                             new KeyBinding(new Move_Command("Move_Up_Command", new Vector2(0, -1)), Keys.Up),
                             new KeyBinding(new Move_Command("Move_Right_Command", new Vector2(1, 0)), Keys.Right),
-                            new KeyBinding(new Move_Command("Move_Left_Command", new Vector2(-1, 0)), Keys.Left)
+                            new KeyBinding(new Move_Command("Move_Left_Command", new Vector2(-1, 0)), Keys.Left),
+                            
+                            new KeyBinding(new Move_Command("Move_Down_CommandP2", new Vector2(0, 1)), Keys.S),
+                            new KeyBinding(new Move_Command("Move_Up_CommandP2", new Vector2(0, -1)), Keys.W),
+                            new KeyBinding(new Move_Command("Move_Right_CommandP2", new Vector2(1, 0)), Keys.D),
+                            new KeyBinding(new Move_Command("Move_Left_CommandP2", new Vector2(-1, 0)), Keys.A)
                         }
                     };
                     _instance.Bindings = _instance._bindingDefaults;

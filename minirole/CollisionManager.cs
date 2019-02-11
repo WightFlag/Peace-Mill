@@ -14,11 +14,28 @@ namespace Peace_Mill
         public List<Collider> Colliders { get => _colliders; }
         public List<Collider> ActiveColliders { get => _activeColliders; }
 
-        private CollisionManager _instance;
+        private static CollisionManager _instance;
 
-        public CollisionManager Instance()
+        public static CollisionManager Instance
         {
-            return _instance == null ? new CollisionManager(): _instance;
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new CollisionManager();
+                    _instance._colliders = new List<Collider>();
+                    _instance._activeColliders = new List<Collider>();
+                }
+
+                return _instance;
+            }
+        }
+
+        public void AddCollider(Collider collider)
+        {
+            _colliders.Add(collider);
+            //will need to change this line below so that active collider list is managed dynamically rather than just making everything active all the time like the line below currently does
+            _activeColliders.Add(collider);
         }
 
         public void Update(GameTime gameTime)

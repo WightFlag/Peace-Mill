@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Peace_Mill
 {
-    class Collider : Component
+    public class Collider : Component
     {
         private Rectangle _collisionBox;
 
@@ -23,7 +23,26 @@ namespace Peace_Mill
         {
             this.Name = "Collider";
             this.gameObject = gameObject;
-            _collisionBox = gameObject.Dimensions;
-        }        
+            //_collisionBox = gameObject.Dimensions;
+            //_collisionBox = gameObject.SourceRect;
+        }
+
+        public Collider()
+        {
+            this.Name = "Collider";
+            //_collisionBox = gameObject.SourceRect;
+        }
+
+        public override void LoadContent()
+        {
+            //_collisionBox = gameObject.SourceRect;
+            CollisionManager.Instance.AddCollider(this);
+        }
+        
+        public override void Update(GameTime gameTime)
+        {
+            //_collisionBox = gameObject.SourceRect;
+            Console.WriteLine(CollisionBox.Height + " " + CollisionBox.Width); //this line is just for debugging and ensuring that the collision box is appropriately sized and not changing.
+        }
     }
 }

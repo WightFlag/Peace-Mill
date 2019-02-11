@@ -12,6 +12,14 @@ namespace Peace_Mill
     public class InputHandler
     {
 
+        ///////////////////////////////////////////////
+        private GamePadCapabilities _gamepadCapbilitiesP2;
+        private GamePadState _previousGamePadStateP2;
+        private GamePadState _currentGamePadStateP2;
+        /////////////////////////////////////////////////////////
+       
+
+
         private KeyboardState _previousKeyState;
         private KeyboardState _currentKeyState;
         private List<Keys> _keysDown;
@@ -39,6 +47,23 @@ namespace Peace_Mill
         {
             _previousKeyState = _currentKeyState;
             _currentKeyState = Keyboard.GetState();
+
+
+            ///////////////////////////////////////////////
+
+            _gamepadCapbilitiesP2 = GamePad.GetCapabilities(PlayerIndex.Two);
+
+            if (_gamepadCapbilitiesP2.IsConnected)
+            {
+                _previousGamePadStateP2 = _currentGamePadStateP2;
+                _currentGamePadStateP2 = GamePad.GetState(PlayerIndex.Two);
+            }
+
+            if (IsKeyStateChanged(_previousGamePadStateP2, _currentGamePadStateP2))
+                Console.WriteLine(_currentGamePadStateP2.ToString());
+
+            ///////////////////////////////////////////////
+
             if (IsKeyStateChanged())
                 OnKeyStateChanged();
             if (_keysDown.Count != 0)
@@ -66,6 +91,17 @@ namespace Peace_Mill
                 return true;
             return false;
         }
+
+        /////////////////////////////////////////////////////
+        
+        public bool IsKeyStateChanged(GamePadState gps1, GamePadState gps2)
+        {
+            if (gps1 != gps2)
+                return true;
+            return false;
+        }
+
+        /////////////////////////////////////////////////////
 
         public void OnKeyStateChanged()
         {

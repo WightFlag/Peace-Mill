@@ -128,7 +128,10 @@ namespace Peace_Mill
         {
             for(var i = 0; _children[i] != null; i++)
             {
-                _children[i].LoadContent();
+                //_children[i].LoadContent();
+                var child = _children[i];
+                child.LoadContent();
+
                 if (_children[i] is IRenderable)
                     Renderables.Add(_children[i]);
             }
@@ -141,7 +144,11 @@ namespace Peace_Mill
         public void Update(GameTime gameTime)
         {
             for (var i = 0; _children[i] != null; i++)
+            {
                 _children[i].Update(gameTime);
+                //Console.WriteLine($"object{i} velocity: {_velocity}");
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

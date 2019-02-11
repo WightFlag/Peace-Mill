@@ -8,28 +8,28 @@ namespace Peace_Mill
     {
         public ScreenInputController(GameObject gameObject) 
         {
-            Actions = new List<string>()
-            {
-                "Move_Down_Command",
-                "Move_Up_Command",
-                "Move_Right_Command",
-                "Move_Left_Command",
-                "Turn_Right_Command",
-                "Turn_Left_Command"
-            };
+            //Actions = new List<string>()
+            //{
+            //    "Move_Down_Command",
+            //    "Move_Up_Command",
+            //    "Move_Right_Command",
+            //    "Move_Left_Command",
+            //    "Turn_Right_Command",
+            //    "Turn_Left_Command"
+            //};
         }
 
         public ScreenInputController()
         {
-            Actions = new List<string>()
-            {
-                "Move_Down_Command",
-                "Move_Up_Command",
-                "Move_Right_Command",
-                "Move_Left_Command",
-                "Turn_Right_Command",
-                "Turn_Left_Command"
-            };
+            //Actions = new List<string>()
+            //{
+            //    "Move_Down_Command",
+            //    "Move_Up_Command",
+            //    "Move_Right_Command",
+            //    "Move_Left_Command",
+            //    "Turn_Right_Command",
+            //    "Turn_Left_Command"
+            //};
         }
     }
 }
